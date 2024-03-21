@@ -1,0 +1,90 @@
+.offcanvas.offcanvas-bottom {
+  width: 375px;
+  //   top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%) !important;
+  border-radius: 18px 18px 0 0;
+  height: 284px !important;
+  border: none;
+  outline: none;
+
+  .offcanvas-body {
+    padding: 0;
+
+    height: 284px;
+    .handle {
+      width: 115px;
+      height: 6px;
+      background-color: #cfcfcf;
+      border-radius: 5px;
+      margin-top: 12px;
+    }
+
+    img {
+      margin-top: 24px;
+    }
+
+    .confirm_msg {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 28px;
+      padding: 0 24px;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    .action_msg {
+      font-size: 14px;
+      margin-top: 8px;
+      span {
+        color: #e72d38;
+      }
+    }
+
+    .button_div {
+      position: fixed;
+      bottom: 20px;
+      gap: 20px;
+      .no_btn,
+      .yes_btn {
+        width: 140px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+        font-weight: 600;
+        border-radius: 25.5px;
+        cursor: pointer;
+      }
+
+      .no_btn {
+        border: 1px solid;
+        color: #747474;
+      }
+      .yes_btn {
+        background-color: #e72d38;
+        color: white;
+      }
+    }
+  }
+}
+
+.offcanvas-backdrop.show {
+  left: 50% !important;
+  outline: none;
+  transform: translate(-50%) !important;
+  width: 375px;
+}
+
+@media (max-width: 500px) {
+  .offcanvas.offcanvas-bottom {
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .offcanvas-backdrop.show{
+    max-width: 500px;
+    width: 100%;
+  }
+}

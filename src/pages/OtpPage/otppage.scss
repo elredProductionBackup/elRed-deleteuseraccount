@@ -1,0 +1,80 @@
+.otp-page-phone-number {
+  font-size: 14px;
+  color: #313030;
+  line-height: 21px;
+  font-weight: 500;
+  font-family: "AvenirPro-medium";
+}
+
+.otp-input-label {
+  margin-top: 32px;
+  margin-bottom: 14px;
+  font-family: "AvenirPro-medium";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.2px;
+  text-align: left;
+}
+
+.otp-input-wrapper-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  position: relative;
+
+  div {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .incorrect-otp-error {
+    color: #be212a;
+    font-size: 12px;
+    font-weight: 500;
+    position: absolute;
+    top: 110%;
+  }
+}
+
+.custom_input_one {
+  width: 46px !important;
+  height: 46px;
+  color: #000;
+  background: #f7f7f7;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.border_error {
+  border: 1px solid #e72d38;
+}
+
+.resend-otp-link-container {
+  margin-top: 25px;
+  text-align: right;
+
+  .resend-otp-link-txt {
+    cursor: pointer;
+    color: rgb(231, 45, 56, 1);
+    font-family: "AvenirPro-medium";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.8px;
+    text-decoration: underline;
+  }
+}
+
+.otp-time-remaining {
+  color: #000;
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 16.8px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: right;
+  margin-top: 25px;
+}

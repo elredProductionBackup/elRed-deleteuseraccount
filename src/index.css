@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "AvenirPro-regular";
+  src: url("./assets/fonts/Avenir_Next_Pro/AvenirNextLTPro-Regular.otf")
+    format("opentype");
+}
+
+@font-face {
+  font-family: "AvenirPro-medium";
+  src: url("./assets/fonts/Avenir_Next_Pro/AvenirNextLTPro-Medium.otf")
+    format("opentype");
+  /* You may include additional font properties if needed */
+}
+
+* {
+  font-family: "AvenirPro-medium";
+}

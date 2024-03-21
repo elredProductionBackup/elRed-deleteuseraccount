@@ -1,0 +1,93 @@
+.main_page {
+  .main_page_content {
+    padding: 16px 20px;
+    padding-bottom: 0;
+    height: calc(100vh - 150px);
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .main_page_desc {
+      font-weight: 500;
+      font-size: 16px;
+      font-family: "AvenirPro-medium";
+      margin-top: 10px;
+    }
+
+    .delete_instructions {
+      padding: 20px 10px;
+      padding-right: 20px;
+
+      .instruction_div {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 16px;
+
+        .text_div {
+          color: #666666;
+          font-size: 14px;
+          font-family: "AvenirPro-medium";
+        }
+      }
+    }
+
+    .phone_number_div {
+      .number_input {
+        margin-top: 8px;
+        display: flex;
+        gap: 12px;
+        .country_code {
+          background-color: #f7f7f7;
+          border-radius: 8px;
+          width: 74px;
+          height: 46px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        input {
+          background-color: #f7f7f7;
+          border: none;
+          outline: none;
+          border-radius: 8px;
+          padding: 0 22px;
+          width: 100%;
+        }
+      }
+    }
+
+    .main_page_question {
+      font-weight: 500;
+      font-size: 16px;
+      font-family: "AvenirPro-medium";
+      margin-top: 30px;
+    }
+
+    .text_area_div {
+      margin-top: 20px;
+      textarea {
+        height: 132px;
+        resize: none;
+        border-radius: 20px;
+        width: 100%;
+        background-color: #f7f7f7;
+        border: none;
+        padding: 15px;
+        outline: none;
+        font-size: 20px;
+
+        &::placeholder {
+          font-size: 20px;
+          color: #929292;
+        }
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+  }
+}
