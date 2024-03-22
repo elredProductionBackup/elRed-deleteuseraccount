@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
 import Button from '../../components/Button/Button'
 import './mainpage.scss'
 import TitleText from '../../components/TitleText/TitleText'
 import { deleteInstructions } from '../../data'
-import { handleChange, handlePaste } from '../../functions'
+import { handleChange, handlePaste, onPhoneBlur } from '../../functions'
+import NoAccountModal from '../../components/NoAccountModal/NoAccountModal'
 
-const MainPage = ({ setPage, number, setNumber }) => {
-    const handleClick = () => { setPage(true) }
+const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneError, setPhoneError, noUser, otpLoader }) => {
+    // const handleClick = () => { setPage(true) }, 
+    const isButtonDisabled = phoneError || number === '' || reason === "";
 
     return (
         <div className='main_page'>
@@ -18,7 +19,7 @@ const MainPage = ({ setPage, number, setNumber }) => {
                 <div className="delete_instructions">
                     {
                         deleteInstructions?.map((item, id) => (
-                            <div className="instruction_div">
+                            <div className="instruction_div" key={id}>
                                 <img src={item?.logo} alt="" />
                                 <div className="text_div">
                                     {item?.desc}
@@ -35,17 +36,22 @@ const MainPage = ({ setPage, number, setNumber }) => {
                             value={number}
                             onChange={(e) => handleChange(e, setNumber)}
                             onPaste={(e) => handlePaste(e, setNumber)}
+                            onBlur={(e) => onPhoneBlur(e, setPhoneError)}
                             maxLength={10} />
                     </div>
+                    {phoneError && <div className="error_number">Enter valid phone number</div>}
                 </div>
                 <div className="main_page_question">
                     Why are you deleting your account?
                 </div>
                 <div className="text_area_div">
-                    <textarea placeholder='Type here...' />
+                    <textarea placeholder='Type here...' value={reason} onChange={e => setReason(e.target.value)} />
                 </div>
+                <div className="reason_err">Minimum 1 character is required</div>
             </div>
-            <Button onClickFunction={handleClick} title={'Get OTP'} />
+            <Button loading={otpLoader} onClickFunction={handleSubmit} title={'Get OTP'} disable={isButtonDisabled} />
+
+            {noUser && <NoAccountModal />}
         </div>
     )
 }

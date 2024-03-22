@@ -7,19 +7,45 @@ import SuccessPage from "../SuccessPage/SuccessPage";
 import NoAccountModal from "../../components/NoAccountModal/NoAccountModal";
 import ConfirmationPopup from "../../components/ConfirmationPopup/ConfirmationPopup";
 import { useCountdownTimer } from "../../components/Hooks/useCountDownTimer";
+import axios from "axios";
+import { formatPhoneNumber } from "../../functions";
 
-const OtpPage = ({ number }) => {
+const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
+  const { REACT_APP_API_ENDPOINT } = process.env
   const [otp, setOtp] = useState("");
   const [incorrectOtp, setIncorrectOtp] = useState(false);
+  const [expiredOtp, setExpiredOtp] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [showNoAccountPopup, setShowNoAccountPopup] = useState(false);
   const [confirm, setConfirm] = useState(false)
   const [startTimer, setStartTimer] = useState(false);
   const { timer, formatTime, resetTimer } = useCountdownTimer(60, startTimer);
+  const buttonDisabled = otp.length < 6
 
   useEffect(() => {
     setStartTimer(true);
   }, []);
+
+  const submitRequest = async () => {
+    setConfirm(false)
+    const data = { reason, otp, transactionId, phone: `+91${number}` }
+    try {
+      const res = await axios.post(`${REACT_APP_API_ENDPOINT}/webViewDeleteAccountVerifyOtp`, data)
+      if (res?.data?.success) {
+        setSuccess(true)
+      } else if (res?.data?.errorCode === 5) {
+        setIncorrectOtp(true)
+      } else if (res?.data?.errorCode === 8) {
+        setExpiredOtp(true)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const onFocusOtp = () => {
+    setIncorrectOtp(false)
+    setExpiredOtp(false)
+  }
 
   return (
     <>
@@ -31,7 +57,7 @@ const OtpPage = ({ number }) => {
             <TitleText title={"One time password"} />
             <div className="main_page_desc">
               We have sent OTP to your registered mobile number{" "}
-              <span className="otp-page-phone-number">+91 {number}</span>
+              <span className="otp-page-phone-number">{formatPhoneNumber(number)}</span>
             </div>
             <div className="otp-input-label">OTP</div>
             <div className="otp-input-wrapper-div">
@@ -52,12 +78,12 @@ const OtpPage = ({ number }) => {
                     }
                     type="text"
                     inputMode="decimal"
+                    onFocus={onFocusOtp}
                   />
                 )}
               />
-              {incorrectOtp ? (
-                <div class="incorrect-otp-error">Invalid OTP entered</div>
-              ) : null}
+              {incorrectOtp && <div class="incorrect-otp-error">Invalid OTP entered</div>}
+              {expiredOtp && <div class="incorrect-otp-error">OTP expired</div>}
             </div>
             {timer > 0 && startTimer ? (
               <div className="otp-time-remaining">
@@ -67,8 +93,13 @@ const OtpPage = ({ number }) => {
               <div className="resend-otp-link-container">
                 <span
                   className="resend-otp-link-txt"
-                  onClick={() => setShowNoAccountPopup(true)}
-                  // onClick={resetTimer}
+                  // onClick={() => setShowNoAccountPopup(true)}
+                  onClick={() => {
+                    resendOtp()
+                    resetTimer()
+                    setIncorrectOtp(false)
+                    setOtp("")
+                  }}
                 >
                   Resend OTP
                 </span>
@@ -78,11 +109,11 @@ const OtpPage = ({ number }) => {
           <Button
             onClickFunction={() => setConfirm(true)}
             title={"Submit delete request"}
+            disable={buttonDisabled}
           />
         </div>
       )}
-      {showNoAccountPopup ? <NoAccountModal /> : null}
-      {confirm ? <ConfirmationPopup confirm={confirm} setConfirm={setConfirm} setSuccess={setSuccess} /> : null}
+      {confirm ? <ConfirmationPopup confirm={confirm} setConfirm={setConfirm} setSuccess={setSuccess} submitRequest={submitRequest} /> : null}
     </>
   );
 };

@@ -57,6 +57,13 @@
           width: 100%;
         }
       }
+
+      .error_number {
+        color: #e72d38;
+        font-size: 12px;
+        font-weight: 500;
+        margin-top: 7px;
+      }
     }
 
     .main_page_question {
@@ -88,6 +95,12 @@
           display: none;
         }
       }
+    }
+
+    .reason_err {
+      font-size: 12px;
+      font-weight: 500;
+      color: #929292;
     }
   }
 }

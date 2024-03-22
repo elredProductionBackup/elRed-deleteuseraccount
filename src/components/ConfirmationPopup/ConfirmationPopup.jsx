@@ -1,21 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './confirmationpopup.scss'
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import delete_logo from '../../assets/del.svg'
+import { Spinner } from 'react-bootstrap';
 
-const ConfirmationPopup = ({ confirm, setConfirm, setSuccess }) => {
+const ConfirmationPopup = ({ confirm, setConfirm, setSuccess, submitRequest }) => {
     const handleClose = () => setConfirm(false)
-    const confirmed = () => {
-        setConfirm(false)
-        setSuccess(true)
-    }
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        const img = new Image();
+        img.onload = () => setLoading(false);
+        img.src = delete_logo;
+    }, []);
+
     return (
         <div className='confirmation_popup'>
             <Offcanvas show={confirm} onHide={handleClose} placement='bottom'>
                 <Offcanvas.Body>
                     <div className="d-flex align-items-center flex-column">
                         <div className="handle"></div>
-                        <img src={delete_logo} alt="" />
+                        {loading ? <Spinner variant='danger' /> :
+                            <img src={delete_logo} alt="" />}
                         <div className="confirm_msg">
                             Are you sure you want to delete the account?
                         </div>
@@ -25,7 +31,7 @@ const ConfirmationPopup = ({ confirm, setConfirm, setSuccess }) => {
                         </div>
                         <div className="button_div d-flex align-items-center">
                             <div className='no_btn' onClick={handleClose}>No</div>
-                            <div className='yes_btn' onClick={confirmed}>Yes</div>
+                            <div className='yes_btn' onClick={submitRequest}>Yes</div>
                         </div>
                     </div>
                 </Offcanvas.Body>

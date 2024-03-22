@@ -1,48 +1,88 @@
-import React, { useState } from 'react'
-import MainPage from '../MainPage/MainPage'
-import OtpPage from '../OtpPage/OtpPage'
+import React, { useState } from "react";
+import MainPage from "../MainPage/MainPage";
+import OtpPage from "../OtpPage/OtpPage";
+import axios from "axios";
+import AlreadyRequest from "../AlreadyRequest/AlreadyRequest";
 
 const Home = () => {
-    const [otpPage, setOtpPage] = useState(false)
-    const [number, setNumber] = useState('')
-    return (
-        <div>
-            {
-                otpPage ? <OtpPage number={number} /> : <>
-                    <MainPage setPage={setOtpPage} number={number} setNumber={setNumber} /></>
-            }
-        </div>
-    )
-}
+  const { REACT_APP_API_ENDPOINT } = process.env;
+  const [otpPage, setOtpPage] = useState(false);
+  const [number, setNumber] = useState("");
+  const [reason, setReason] = useState("");
+  const [transactionId, setTransactionId] = useState("");
+  const [phoneError, setPhoneError] = useState(false);
+  const [noUser, setNoUser] = useState(false)
+  const [otpLoader, setOtpLoader] = useState(false)
+  const [existed, setExisted] = useState(false)
 
-const Page1 = () => {
-    return (
-        <div>Page 1</div>
-    )
-}
+  const handleSubmit = async () => {
+    setOtpLoader(true)
+    const mobile = `+91${number}`;
+    try {
+      const res = await axios.post(
+        `${REACT_APP_API_ENDPOINT}/webViewDeleteAccountSendOtp`,
+        { phone: mobile }
+      );
+      if (res?.data?.success) {
+        setTransactionId(res?.data?.result?.[0]?.transactionId);
+        setOtpPage(true);
+        setOtpLoader(false)
+      } else if (res.data?.errorCode === 9) {
+        setNoUser(true)
+        setOtpLoader(false)
+      } else if (res?.data?.errorCode === 10) {
+        setExisted(true)
+      }
+    } catch (error) {
+      console.log(error);
+      setOtpLoader(false)
+    }
+  };
 
-const Page2 = () => {
-    const [page3, setPage3] = useState(false)
-    return (
-        <div>
-            {
-                page3 ? <Page3 /> : <>
-                    <div className='bg-success'>Page 2</div>
-                    <button onClick={() => setPage3(true)}>goto page 3</button>
-                </>
-            }
-        </div>
+  const resendOtp = async () => {
+    const mobile = `+91${number}`;
+    try {
+      const res = await axios.post(
+        `${REACT_APP_API_ENDPOINT}/webViewDeleteAccountSendOtp`,
+        { phone: mobile }
+      );
+      if (res?.status === 200) {
+        setTransactionId(res?.data?.result?.[0]?.transactionId);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return (
+    <div>
+      {existed ? (
+        <AlreadyRequest />
+      ) : (
+        otpPage ? (
+          <OtpPage
+            number={number}
+            reason={reason}
+            transactionId={transactionId}
+            resendOtp={resendOtp}
+          />
+        ) : (
+          <MainPage
+            setPage={setOtpPage}
+            number={number}
+            setNumber={setNumber}
+            handleSubmit={handleSubmit}
+            reason={reason}
+            setReason={setReason}
+            phoneError={phoneError}
+            setPhoneError={setPhoneError}
+            noUser={noUser}
+            otpLoader={otpLoader}
+            setOtpLoader={setOtpLoader}
+          />
+        )
+      )}
+    </div>
+  );
+};
 
-    )
-}
-
-
-const Page3 = () => {
-    return (
-        <>
-            <h1>Page 3</h1>
-        </>
-    )
-}
-
-export default Home
+export default Home;

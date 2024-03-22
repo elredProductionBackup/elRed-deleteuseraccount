@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import './successpage.scss'
+import '../SuccessPage/successpage.scss'
 import Button from '../../components/Button/Button'
 import { redirectToHome } from '../../functions'
 import logo from '../../assets/ok.svg'
 
-const SuccessPage = () => {
+const AlreadyRequest = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -19,7 +19,8 @@ const SuccessPage = () => {
                 className='inner_success_page'>
                 {loading ? <div className='img_shimmer'></div> :
                     <img src={logo} alt="" />}
-                <div className='success_title'>Request Received</div>
+                <div className='success_title'>Account deletion is already
+                    in progress</div>
                 <div className="success_desc">
                     We have received your request, our admin will investigate the request. Account will be deleted in 90 days and  you will be notified via email once the account is deleted
                 </div>
@@ -29,4 +30,4 @@ const SuccessPage = () => {
     )
 }
 
-export default SuccessPage
+export default AlreadyRequest
