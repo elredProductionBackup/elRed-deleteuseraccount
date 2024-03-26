@@ -1,8 +1,7 @@
 .offcanvas.offcanvas-bottom {
-  width: 375px;
-  //   top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%) !important;
+  max-width: 376px !important;
+  width: 100%;
+  margin: 0 auto;
   border-radius: 18px 18px 0 0;
   height: 284px !important;
   border: none;
@@ -21,7 +20,10 @@
       margin-bottom: 24px;
     }
 
-   
+   .img-div-conatiner {
+      width: 42px;
+      height: 42px;
+   }
 
     .confirm_msg {
       font-size: 18px;
@@ -69,21 +71,37 @@
   }
 }
 
+.offcanvas-backdrop.fade {
+  position: relative;
+  transition: opacity 0.3s linear;
+  max-width: 376px !important;
+  width: 100%;
+  margin: 0 auto !important;
+}
+
 .offcanvas-backdrop.show {
-  left: 50% !important;
+  position: relative;
+  transition: opacity 0.3s linear;
   outline: none;
-  transform: translate(-50%) !important;
-  width: 375px;
+  max-width: 376px !important;
+  width: 100%;
+  margin: 0 auto !important;
+  opacity: 0.4 !important;
 }
 
 @media (max-width: 500px) {
   .offcanvas.offcanvas-bottom {
-    max-width: 500px;
+    max-width: 500px !important;
     width: 100%;
   }
 
   .offcanvas-backdrop.show{
-    max-width: 500px;
+    max-width: 500px !important;
+    width: 100%;
+  }
+
+  .offcanvas-backdrop.fade {
+    max-width: 500px !important;
     width: 100%;
   }
 }

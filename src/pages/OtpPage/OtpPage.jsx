@@ -114,7 +114,7 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
           />
         </div>
       )}
-      {confirm ? <ConfirmationPopup confirm={confirm} setConfirm={setConfirm} setSuccess={setSuccess} submitRequest={submitRequest} /> : null}
+      <ConfirmationPopup confirm={confirm} setConfirm={setConfirm} setSuccess={setSuccess} submitRequest={submitRequest} />
     </>
   );
 };
