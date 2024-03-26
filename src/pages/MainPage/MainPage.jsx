@@ -7,7 +7,8 @@ import NoAccountModal from '../../components/NoAccountModal/NoAccountModal'
 
 const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneError, setPhoneError, noUser, otpLoader }) => {
     // const handleClick = () => { setPage(true) }, 
-    const isButtonDisabled = phoneError || number === '' || reason === "";
+    const isReason = reason.trim().length == 0
+    const isButtonDisabled = phoneError || number === '' || isReason === true;
 
     return (
         <div className='main_page'>
@@ -34,7 +35,7 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
                         <div className='country_code'>+91</div>
                         <input type="text"
                             value={number}
-                            onChange={(e) => handleChange(e, setNumber)}
+                            onChange={(e) => handleChange(e, setNumber, setPhoneError)}
                             onPaste={(e) => handlePaste(e, setNumber)}
                             onBlur={(e) => onPhoneBlur(e, setPhoneError)}
                             maxLength={10} />
@@ -47,7 +48,7 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
                 <div className="text_area_div">
                     <textarea placeholder='Type here...' value={reason} onChange={e => setReason(e.target.value)} />
                 </div>
-                <div className="reason_err">Minimum 1 character is required</div>
+                {isReason && <div className="reason_err">Minimum 1 character is required</div>}
             </div>
             <Button loading={otpLoader} onClickFunction={handleSubmit} title={'Get OTP'} disable={isButtonDisabled} />
 

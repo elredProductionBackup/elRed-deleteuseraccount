@@ -5,10 +5,17 @@ export const handlePaste = (event, setValue) => {
     setValue(onlyNumbers);
 };
 
-export const handleChange = (event, setValue) => {
+export const handleChange = (event, setValue, setPhoneError) => {
     const inputValue = event.target.value;
     const onlyNumbers = inputValue.replace(/\D/g, ''); // Remove non-digit characters
     setValue(onlyNumbers.slice(0, 10)); // Limit to 10 digits
+    if (/^[0-5]/.test(onlyNumbers)) {
+        // Handle the error
+        setPhoneError(true);
+    } else {
+        // Clear the error if the input is valid
+        setPhoneError(false);
+    }
 };
 
 export const onPhoneBlur = (event, setPhoneError) => {
