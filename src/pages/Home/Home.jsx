@@ -23,7 +23,7 @@ const Home = () => {
     const mobile = `+91${number}`;
     try {
       const res = await axios.post(
-        `${REACT_APP_API_ENDPOINT}/webViewDeleteAccountSendOtp1`,
+        `${REACT_APP_API_ENDPOINT}/webViewDeleteAccountSendOtp`,
         { phone: mobile }
       );
       if (res?.data?.success) {
