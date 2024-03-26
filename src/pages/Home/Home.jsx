@@ -3,6 +3,7 @@ import MainPage from "../MainPage/MainPage";
 import OtpPage from "../OtpPage/OtpPage";
 import axios from "axios";
 import AlreadyRequest from "../AlreadyRequest/AlreadyRequest";
+import toast from "react-simple-toasts";
 
 const Home = () => {
   const { REACT_APP_API_ENDPOINT } = process.env;
@@ -15,12 +16,14 @@ const Home = () => {
   const [otpLoader, setOtpLoader] = useState(false)
   const [existed, setExisted] = useState(false)
 
+  
+
   const handleSubmit = async () => {
     setOtpLoader(true)
     const mobile = `+91${number}`;
     try {
       const res = await axios.post(
-        `${REACT_APP_API_ENDPOINT}/webViewDeleteAccountSendOtp`,
+        `${REACT_APP_API_ENDPOINT}/webViewDeleteAccountSendOtp1`,
         { phone: mobile }
       );
       if (res?.data?.success) {
@@ -34,8 +37,11 @@ const Home = () => {
         setExisted(true)
       }
     } catch (error) {
-      console.log(error);
+      console.log(error, 'eroor');
       setOtpLoader(false)
+
+      toast("OTP Service is Down, Please Try Later")
+
     }
   };
 
