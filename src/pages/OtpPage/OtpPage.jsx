@@ -33,8 +33,10 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
         setSuccess(true)
       } else if (res?.data?.errorCode === 5) {
         setIncorrectOtp(true)
+        setOtp("")
       } else if (res?.data?.errorCode === 8) {
         setExpiredOtp(true)
+        setOtp("")
       }
     } catch (error) {
       console.log(error)
@@ -71,7 +73,7 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
                   <input
                     {...props}
                     className={
-                      incorrectOtp
+                      incorrectOtp || expiredOtp
                         ? "custom_input_one border_error"
                         : "custom_input_one"
                     }
@@ -97,6 +99,7 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
                     resetTimer()
                     setIncorrectOtp(false)
                     setOtp("")
+                    setExpiredOtp(false)
                   }}
                 >
                   Resend OTP
