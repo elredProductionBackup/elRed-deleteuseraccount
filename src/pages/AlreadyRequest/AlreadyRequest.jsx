@@ -25,7 +25,7 @@ const AlreadyRequest = () => {
                     We have received your request, our admin will investigate the request. Account will be deleted in 90 days and  you will be notified via email once the account is deleted
                 </div>
             </div>
-            <Button title={'OK'} onClickFunction={redirectToHome} />
+            <Button title={'Ok'} onClickFunction={redirectToHome} />
         </div>
     )
 }

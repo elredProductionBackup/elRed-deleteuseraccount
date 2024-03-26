@@ -3,6 +3,7 @@ import MainPage from "../MainPage/MainPage";
 import OtpPage from "../OtpPage/OtpPage";
 import axios from "axios";
 import AlreadyRequest from "../AlreadyRequest/AlreadyRequest";
+import toast from "react-simple-toasts";
 
 const Home = () => {
   const { REACT_APP_API_ENDPOINT } = process.env;
@@ -14,6 +15,8 @@ const Home = () => {
   const [noUser, setNoUser] = useState(false)
   const [otpLoader, setOtpLoader] = useState(false)
   const [existed, setExisted] = useState(false)
+
+  
 
   const handleSubmit = async () => {
     setOtpLoader(true)
@@ -34,8 +37,11 @@ const Home = () => {
         setExisted(true)
       }
     } catch (error) {
-      console.log(error);
+      console.log(error, 'eroor');
       setOtpLoader(false)
+
+      toast("OTP Service is Down, Please Try Later")
+
     }
   };
 
