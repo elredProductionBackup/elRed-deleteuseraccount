@@ -4,7 +4,6 @@ import Button from "../../components/Button/Button";
 import TitleText from "../../components/TitleText/TitleText";
 import OTPInput from "react-otp-input";
 import SuccessPage from "../SuccessPage/SuccessPage";
-import NoAccountModal from "../../components/NoAccountModal/NoAccountModal";
 import ConfirmationPopup from "../../components/ConfirmationPopup/ConfirmationPopup";
 import { useCountdownTimer } from "../../components/Hooks/useCountDownTimer";
 import axios from "axios";
@@ -82,8 +81,8 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
                   />
                 )}
               />
-              {incorrectOtp && <div class="incorrect-otp-error">Invalid OTP entered</div>}
-              {expiredOtp && <div class="incorrect-otp-error">OTP expired</div>}
+              {incorrectOtp && <div className="incorrect-otp-error">Invalid OTP entered</div>}
+              {expiredOtp && <div className="incorrect-otp-error">OTP expired</div>}
             </div>
             {timer > 0 && startTimer ? (
               <div className="otp-time-remaining">
@@ -93,7 +92,6 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
               <div className="resend-otp-link-container">
                 <span
                   className="resend-otp-link-txt"
-                  // onClick={() => setShowNoAccountPopup(true)}
                   onClick={() => {
                     resendOtp()
                     resetTimer()
