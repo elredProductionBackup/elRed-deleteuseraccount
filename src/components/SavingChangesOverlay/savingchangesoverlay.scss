@@ -1,0 +1,43 @@
+.saving-changes-overlay {
+    position: fixed;
+    width: 375px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 999;
+    overflow: hidden;
+
+    @media only screen and (max-width: 500px) {
+        width: 100%;
+    }
+
+    .saving-changes-overlay-text-container {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        z-index: 9999;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        gap: 6px;
+
+        .saving-changes-overlay-spinner {
+            width: 20px;
+            height: 20px;
+            --bs-spinner-border-width: 2px !important;
+        }
+
+        .saving-changes-text {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 18.77px;
+            color: #fff;
+            letter-spacing: 0.02em;
+        }
+    }
+}

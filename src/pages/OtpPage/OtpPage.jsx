@@ -8,6 +8,7 @@ import ConfirmationPopup from "../../components/ConfirmationPopup/ConfirmationPo
 import { useCountdownTimer } from "../../components/Hooks/useCountDownTimer";
 import axios from "axios";
 import { formatPhoneNumber } from "../../functions";
+import SavingChangesOverlay from "../../components/SavingChangesOverlay/SavingChangesOverlay";
 
 const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
   const { REACT_APP_API_ENDPOINT } = process.env
@@ -18,6 +19,7 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
   const [confirm, setConfirm] = useState(false)
   const [startTimer, setStartTimer] = useState(false);
   const { timer, formatTime, resetTimer } = useCountdownTimer(60, startTimer);
+  const [submittingOverlay, setSubmittingOverlay] = useState(false);
   const buttonDisabled = otp.length < 6
 
   useEffect(() => {
@@ -26,6 +28,7 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
 
   const submitRequest = async () => {
     setConfirm(false)
+    setSubmittingOverlay(true)
     const data = { reason, otp, transactionId, phone: `+91${number}` }
     try {
       const res = await axios.post(`${REACT_APP_API_ENDPOINT}/webViewDeleteAccountVerifyOtp`, data)
@@ -40,6 +43,8 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
       }
     } catch (error) {
       console.log(error)
+    } finally {
+      setSubmittingOverlay(false)
     }
   }
 
@@ -115,6 +120,7 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
         </div>
       )}
       <ConfirmationPopup confirm={confirm} setConfirm={setConfirm} setSuccess={setSuccess} submitRequest={submitRequest} />
+      {submittingOverlay ? <SavingChangesOverlay /> : null}
     </>
   );
 };

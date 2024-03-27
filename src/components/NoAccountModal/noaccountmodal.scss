@@ -33,6 +33,19 @@
         width: 80px;
         pointer-events: none;
       }
+
+      .no-account-alert-img-loader-container {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        width: 80px;
+
+        .no-account-img-spinner { 
+          height: 30px;
+          width: 30px;
+        }
+      }
     }
 
     .no-account-popup-header {
