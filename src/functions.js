@@ -9,7 +9,9 @@ export const handleChange = (event, setValue, setPhoneError) => {
     const inputValue = event.target.value;
     const onlyNumbers = inputValue.replace(/\D/g, ''); // Remove non-digit characters
     setValue(onlyNumbers.slice(0, 10)); // Limit to 10 digits
-    if (/^[0-5]/.test(onlyNumbers)) {
+    if (onlyNumbers.length !== 10) {
+        setPhoneError(true)
+    } else if (/^[0-5]/.test(onlyNumbers)) {
         // Handle the error
         setPhoneError(true);
     } else {
