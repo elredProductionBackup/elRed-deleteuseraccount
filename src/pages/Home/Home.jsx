@@ -84,6 +84,7 @@ const Home = () => {
             noUser={noUser}
             otpLoader={otpLoader}
             setOtpLoader={setOtpLoader}
+            setNoUser={setNoUser}
           />
         )
       )}

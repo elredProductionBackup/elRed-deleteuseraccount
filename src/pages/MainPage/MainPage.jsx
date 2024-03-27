@@ -6,7 +6,7 @@ import { handleChange, handlePaste, onPhoneBlur } from '../../functions'
 import NoAccountModal from '../../components/NoAccountModal/NoAccountModal'
 import DeleteInstructions from '../../components/DeleteInstructions/DeleteInstructions'
 
-const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneError, setPhoneError, noUser, otpLoader }) => {
+const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneError, setPhoneError, noUser, otpLoader, setNoUser }) => {
     // const handleClick = () => { setPage(true) }, 
     const isReason = reason.trim().length == 0
     const isButtonDisabled = phoneError || number === '' || isReason === true;
@@ -48,7 +48,7 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
             </div>
             <Button loading={otpLoader} onClickFunction={handleSubmit} title={'Get OTP'} disable={isButtonDisabled} />
 
-            {noUser && <NoAccountModal />}
+            {noUser ? <NoAccountModal setNoUser={setNoUser} /> : null}
         </div>
     )
 }
