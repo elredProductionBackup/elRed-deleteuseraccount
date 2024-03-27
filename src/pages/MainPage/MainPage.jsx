@@ -4,6 +4,7 @@ import TitleText from '../../components/TitleText/TitleText'
 import { deleteInstructions } from '../../data'
 import { handleChange, handlePaste, onPhoneBlur } from '../../functions'
 import NoAccountModal from '../../components/NoAccountModal/NoAccountModal'
+import DeleteInstructions from '../../components/DeleteInstructions/DeleteInstructions'
 
 const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneError, setPhoneError, noUser, otpLoader }) => {
     // const handleClick = () => { setPage(true) }, 
@@ -19,13 +20,8 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
                 </div>
                 <div className="delete_instructions">
                     {
-                        deleteInstructions?.map((item, id) => (
-                            <div className="instruction_div" key={id}>
-                                <img src={item?.logo} alt="" />
-                                <div className="text_div">
-                                    {item?.desc}
-                                </div>
-                            </div>
+                        deleteInstructions?.map((item) => (
+                            <DeleteInstructions logo={item?.logo} desc={item?.desc} key={item?.id} />
                         ))
                     }
                 </div>
