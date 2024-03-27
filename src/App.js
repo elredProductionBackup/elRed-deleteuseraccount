@@ -8,7 +8,6 @@ import 'react-simple-toasts/dist/theme/dark.css'; // choose your theme
 toastConfig({ theme: 'dark' });
 toastConfig({ maxVisibleToasts: 1 });
 
-console.log('branch: Dev')
 
 function App() {
   return (
