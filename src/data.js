@@ -5,11 +5,11 @@ import img3 from './assets/logo3.svg'
 export const deleteInstructions = [
     {
         logo: img1,
-        desc: 'All your offerings will no longer be accessible'
+        desc: 'Your public profile will be permanently removed'
     },
     {
         logo: img2,
-        desc: 'Your public profile will be permanently removed'
+        desc: 'All your offerings will no longer be accessible'
     },
     {
         logo: img3,
