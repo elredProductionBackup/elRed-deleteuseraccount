@@ -32,9 +32,12 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
                         <input type="text"
                             value={number}
                             onChange={(e) => handleChange(e, setNumber, setPhoneError)}
-                            onPaste={(e) => handlePaste(e, setNumber)}
-                            onBlur={(e) => onPhoneBlur(e, setPhoneError)}
-                            maxLength={10} />
+                            onPaste={(e) => handlePaste(e, setNumber, setPhoneError)}
+                            onBlur={(e) => onPhoneBlur(e,setNumber, setPhoneError)}
+                            maxLength={10} 
+                            inputMode="numeric" 
+                            placeholder='Enter phone number'
+                            />
                     </div>
                     {phoneError && <div className="error_number">Enter valid phone number</div>}
                 </div>
