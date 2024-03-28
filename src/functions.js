@@ -1,17 +1,42 @@
-export const handlePaste = (event, setValue) => {
+export const handlePaste = (event, setValue, setPhoneError) => {
     event.preventDefault();
-    const pastedText = event.clipboardData.getData('text/plain').slice(0, 10);
-    const onlyNumbers = pastedText.replace(/\D/g, ''); // Remove non-digit characters
-    setValue(onlyNumbers);
+    const pastedText = event.clipboardData.getData('text/plain');
+    const modifiedValue = pastedText?.replace(/\D/g, '');
+    let truncatedValue = modifiedValue?.replace(/^0+/, "");
+
+    if (truncatedValue?.startsWith("+91") && truncatedValue?.length > 12) {
+      truncatedValue = truncatedValue?.slice(3);
+    } else if (truncatedValue?.startsWith("91") && truncatedValue?.length >= 12) {
+      truncatedValue = truncatedValue?.slice(2);
+    }
+    truncatedValue = truncatedValue?.slice(0, 10);
+    setValue(truncatedValue);
+    if (truncatedValue.length !== 10) {
+        setPhoneError(true)
+    } else if (/^[0-5]/.test(truncatedValue)) {
+        // Handle the error
+        setPhoneError(true);
+    } else {
+        // Clear the error if the input is valid
+        setPhoneError(false);
+    }
 };
 
 export const handleChange = (event, setValue, setPhoneError) => {
-    const inputValue = event.target.value;
-    const onlyNumbers = inputValue.replace(/\D/g, ''); // Remove non-digit characters
-    setValue(onlyNumbers.slice(0, 10)); // Limit to 10 digits
-    if (onlyNumbers.length !== 10) {
+    const modifiedValue = event.target.value?.replace(/\D/g, '');
+    let truncatedValue = modifiedValue?.replace(/^0+/, "");
+   
+    if (truncatedValue?.startsWith("+91") && truncatedValue?.length > 12) {
+      truncatedValue = truncatedValue?.slice(3);
+    } else if (truncatedValue?.startsWith("91") && truncatedValue?.length >= 12) {
+      truncatedValue = truncatedValue?.slice(2);
+    }
+    truncatedValue = truncatedValue?.slice(0, 10);
+
+    setValue(truncatedValue); // Limit to 10 digits
+    if (truncatedValue.length !== 10) {
         setPhoneError(true)
-    } else if (/^[0-5]/.test(onlyNumbers)) {
+    } else if (/^[0-5]/.test(truncatedValue)) {
         // Handle the error
         setPhoneError(true);
     } else {
@@ -20,20 +45,8 @@ export const handleChange = (event, setValue, setPhoneError) => {
     }
 };
 
-export const onPhoneBlur = (event, setPhoneError) => {
-    const inputValue = event.target.value;
-    const onlyNumbers = inputValue.replace(/\D/g, ''); // Remove non-digit characters
-
-    // Check if the first character falls between 0 and 5
-    if (onlyNumbers.length !== 10) {
-        setPhoneError(true)
-    } else if (/^[0-5]/.test(onlyNumbers)) {
-        // Handle the error
-        setPhoneError(true);
-    } else {
-        // Clear the error if the input is valid
-        setPhoneError(false);
-    }
+export const onPhoneBlur = (event, setValue, setPhoneError) => {
+   handleChange(event, setValue, setPhoneError)
 }
 
 
