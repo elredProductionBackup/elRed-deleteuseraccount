@@ -48,10 +48,14 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
     }
   }
 
-  const onFocusOtp = () => {
-    setIncorrectOtp(false)
-    setExpiredOtp(false)
-  }
+  const handleChangeOTP = (value) => {
+    const updatedOTP = value?.replace(/\D/g, "");
+    if (updatedOTP) {
+      setIncorrectOtp(false);
+      setExpiredOtp(false);
+    }
+    setOtp(updatedOTP);
+  };
 
   return (
     <>
@@ -69,7 +73,7 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
             <div className="otp-input-wrapper-div">
               <OTPInput
                 value={otp}
-                onChange={setOtp}
+                onChange={handleChangeOTP}
                 isInputNum
                 numInputs={6}
                 pattern="[0-9]*"
@@ -84,7 +88,6 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
                     }
                     type="text"
                     inputMode="decimal"
-                    onFocus={onFocusOtp}
                   />
                 )}
               />
