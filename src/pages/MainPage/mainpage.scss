@@ -56,7 +56,16 @@
           border-radius: 8px;
           padding: 0 22px;
           width: 100%;
+
+          &::placeholder {
+            line-height: 19.2px;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: "AvenirPro-medium";
+            color: #848484;
+          }
         }
+
       }
 
       .error_number {
