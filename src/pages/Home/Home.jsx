@@ -16,7 +16,7 @@ const Home = () => {
   const [otpLoader, setOtpLoader] = useState(false)
   const [existed, setExisted] = useState(false)
 
-  
+
 
   const handleSubmit = async () => {
     setOtpLoader(true)
@@ -37,11 +37,13 @@ const Home = () => {
         setExisted(true)
       }
     } catch (error) {
-      console.log(error, 'eroor');
-      setOtpLoader(false)
-
-      toast("OTP Service is Down, Please Try Later")
-
+      if (error?.response?.data?.errorCode === 104) {
+        setOtpLoader(false)
+        toast("OTP Service is Down, Please Try Later")
+      } else {
+        setOtpLoader(false)
+        toast("Something went wrong, Please Try Later")
+      }
     }
   };
 
