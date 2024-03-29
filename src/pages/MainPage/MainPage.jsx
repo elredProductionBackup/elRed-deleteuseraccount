@@ -37,6 +37,7 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
                             maxLength={10} 
                             inputMode="numeric" 
                             placeholder='Enter phone number'
+                            autoComplete="phoneInputNoAutocomplete"
                             />
                     </div>
                     {phoneError && <div className="error_number">Enter valid phone number</div>}
