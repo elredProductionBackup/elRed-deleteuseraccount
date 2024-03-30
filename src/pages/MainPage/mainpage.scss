@@ -41,6 +41,8 @@
         margin-top: 8px;
         display: flex;
         gap: 12px;
+        align-items: center;
+
         .country_code {
           background-color: #f7f7f7;
           border-radius: 8px;
@@ -49,6 +51,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
+          line-height: 19.2px;
         }
 
         input {
@@ -58,6 +61,8 @@
           border-radius: 8px;
           padding: 0 22px;
           width: 100%;
+          height: 46px;
+          line-height: 19.2px;
 
           &::placeholder {
             line-height: 19.2px;
