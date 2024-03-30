@@ -73,6 +73,18 @@
           }
         }
 
+        .input-mac-os-padding-top {
+          padding-top: 5px !important;
+
+          &::placeholder {
+            line-height: 19.2px;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: "AvenirPro-medium";
+            color: #848484;
+            padding-top: 5px !important;
+          }
+        }
       }
 
       .error_number {
