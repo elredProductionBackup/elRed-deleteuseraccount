@@ -5,6 +5,7 @@ import { deleteInstructions } from '../../data'
 import { handleChange, handlePaste, onPhoneBlur } from '../../functions'
 import NoAccountModal from '../../components/NoAccountModal/NoAccountModal'
 import DeleteInstructions from '../../components/DeleteInstructions/DeleteInstructions'
+import { isMacOs } from 'react-device-detect';
 
 const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneError, setPhoneError, noUser, otpLoader, setNoUser }) => {
     // const handleClick = () => { setPage(true) }, 
@@ -28,7 +29,7 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
                 <div className="phone_number_div">
                     <div className="phone_title">Phone number</div>
                     <div className="number_input">
-                        <div className='country_code'>+91</div>
+                        <div className={isMacOs ? 'country_code input-mac-os-padding-top' : 'country_code'}>+91</div>
                         <input type="text"
                             value={number}
                             onChange={(e) => handleChange(e, setNumber, setPhoneError)}
@@ -38,6 +39,7 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
                             inputMode="numeric" 
                             placeholder='Enter phone number'
                             autoComplete="phoneInputNoAutocomplete"
+                            className={isMacOs ? 'input-mac-os-padding-top' : ''}
                             />
                     </div>
                     {phoneError && <div className="error_number">Enter valid phone number</div>}
