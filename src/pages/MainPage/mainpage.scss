@@ -51,7 +51,10 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          line-height: 19.2px;
+          line-height: 1;
+          font-size: 16px;
+          padding-top: 15px;
+          padding-bottom: 15px;
         }
 
         input {
@@ -59,13 +62,15 @@
           border: none;
           outline: none;
           border-radius: 8px;
-          padding: 0 22px;
+          padding: 15px 22px;
           width: 100%;
           height: 46px;
-          line-height: 19.2px;
+          line-height: 1;
+          font-size: 16px;
 
           &::placeholder {
-            line-height: 19.2px;
+            line-height: 1;
+            padding: 15px 0;
             font-size: 16px;
             font-weight: 500;
             font-family: "AvenirPro-medium";
@@ -74,15 +79,16 @@
         }
 
         .input-mac-os-padding-top {
-          padding-top: 5px !important;
+          padding-top: 15px !important;
+          padding-bottom: 15px !important;
 
           &::placeholder {
-            line-height: 19.2px;
+            line-height: 1;
+            padding: 15px 0;
             font-size: 16px;
             font-weight: 500;
             font-family: "AvenirPro-medium";
             color: #848484;
-            padding-top: 5px !important;
           }
         }
       }
