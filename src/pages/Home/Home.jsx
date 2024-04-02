@@ -15,6 +15,7 @@ const Home = () => {
   const [noUser, setNoUser] = useState(false)
   const [otpLoader, setOtpLoader] = useState(false)
   const [existed, setExisted] = useState(false)
+  const [date, setDate] = useState('')
 
 
 
@@ -34,6 +35,7 @@ const Home = () => {
         setNoUser(true)
         setOtpLoader(false)
       } else if (res?.data?.errorCode === 10) {
+        setDate(res?.data?.result?.[0]?.requestCreatedAt)
         setExisted(true)
       }
     } catch (error) {
@@ -64,7 +66,7 @@ const Home = () => {
   return (
     <div>
       {existed ? (
-        <AlreadyRequest />
+        <AlreadyRequest date={date} />
       ) : (
         otpPage ? (
           <OtpPage
@@ -72,6 +74,10 @@ const Home = () => {
             reason={reason}
             transactionId={transactionId}
             resendOtp={resendOtp}
+            existed={existed}
+            setExisted={setExisted}
+            date={date}
+            setDate={setDate}
           />
         ) : (
           <MainPage
