@@ -10,7 +10,7 @@ import axios from "axios";
 import { formatPhoneNumber } from "../../functions";
 import SavingChangesOverlay from "../../components/SavingChangesOverlay/SavingChangesOverlay";
 
-const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
+const OtpPage = ({ number, reason, transactionId, resendOtp, setExisted, setDate }) => {
   const { REACT_APP_API_ENDPOINT } = process.env
   const [otp, setOtp] = useState("");
   const [incorrectOtp, setIncorrectOtp] = useState(false);
@@ -40,6 +40,9 @@ const OtpPage = ({ number, reason, transactionId, resendOtp }) => {
       } else if (res?.data?.errorCode === 8) {
         setExpiredOtp(true)
         setOtp("")
+      } else if (res?.data?.errorCode === 10) {
+        setDate(res?.data?.result?.[0]?.requestCreatedAt)
+        setExisted(true)
       }
     } catch (error) {
       console.log(error)
