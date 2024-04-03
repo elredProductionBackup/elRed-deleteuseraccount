@@ -11,6 +11,7 @@ const SuccessPage = () => {
     return (
         <div className='success_page'>
             <div className='inner_success_page'>
+              <div className='inner_success_page_container'>
                 <div className={imgLoading ? 'img_shimmer_container' : "d-none"}>
                     <Skeleton height={178} width={178} baseColor={"#D6DAE5"} circle 
                         className={imgLoading ? "img_ok_shimmer" : "d-none"} />
@@ -22,6 +23,7 @@ const SuccessPage = () => {
                     We have received your request, our admin will investigate the request. 
                     Account will be deleted in 90 days and  you will be notified via email once the account is deleted
                 </div>
+              </div>
             </div>
             <Button title={'Ok'} onClickFunction={redirectToHome} />
         </div>
