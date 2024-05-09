@@ -6,11 +6,12 @@ import { handleChange, handlePaste, onPhoneBlur } from '../../functions'
 import NoAccountModal from '../../components/NoAccountModal/NoAccountModal'
 import DeleteInstructions from '../../components/DeleteInstructions/DeleteInstructions'
 import { isMacOs } from 'react-device-detect';
+import InputCountry from '../../components/InputCountry/InputCountry'
 
 const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneError, setPhoneError, noUser, otpLoader, setNoUser }) => {
     // const handleClick = () => { setPage(true) }, 
-    const isReason = reason.trim().length == 0
-    const isButtonDisabled = phoneError || number === '' || isReason === true;
+    const isReason = reason.trim().length === 0;
+    const isButtonDisabled = !phoneError || number === '' || isReason === true;
 
     return (
         <div className='main_page'>
@@ -28,7 +29,7 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
                 </div>
                 <div className="phone_number_div">
                     <div className="phone_title">Phone number</div>
-                    <div className="number_input">
+                    {/* <div className="number_input">
                         <div className={isMacOs ? 'country_code input-mac-os-padding-top' : 'country_code'}>+91</div>
                         <input type="text"
                             value={number}
@@ -42,7 +43,8 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
                             className={isMacOs ? 'input-mac-os-padding-top' : ''}
                             />
                     </div>
-                    {phoneError && <div className="error_number">Enter valid phone number</div>}
+                    {phoneError && <div className="error_number">Enter valid phone number</div>} */}
+                    <InputCountry number={number} setNumber={setNumber} phoneError={phoneError} setPhoneError={setPhoneError}/>
                 </div>
                 <div className="main_page_question">
                     Why are you deleting your account?
