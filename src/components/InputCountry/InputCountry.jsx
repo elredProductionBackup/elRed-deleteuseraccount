@@ -1,19 +1,9 @@
 import { useState } from 'react';
 import Select from 'react-select';
-import india from '../../assets/flags/in-flag.webp';
-import canada from '../../assets/flags/ca-flag.webp';
-import malaysia from '../../assets/flags/my-flag.webp';
-import qatar from '../../assets/flags/qa-flag.webp';
 import './InputCountry.scss';
+import { countryData } from './countryData';
 
-const countryData = [
-    { value: "India", label: "IN", name: "India", maxDigits: 10, countryCode: "+91", flag: india },
-    { value: "Canada", label: "Canada", maxDigits: 10, name: "Canada", countryCode: "+1", flag: canada },
-    { value: "Malaysia", label: "Malaysia", maxDigits: 10, name: "Malaysia", countryCode: "+60", flag: malaysia },
-    { value: "Qatar", label: "Qatar", maxDigits: 8, name: "Qatar", countryCode: "+974", flag: qatar }
-];
-
-function InputCountry({number, setNumber}) {
+function InputCountry({number, setNumber,phoneError, setPhoneError}) {
     const [selectedCountry, setSelectedCountry] = useState(countryData[0]);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [isValid, setIsValid] = useState(true);
@@ -22,7 +12,8 @@ function InputCountry({number, setNumber}) {
         setSelectedCountry(selectedOption);
         // setPhoneNumber('');
         setNumber('');
-        setIsValid(true);
+        // setIsValid(true);
+        setPhoneError(false)
     };
 
     const handlePhoneNumberChange = (event) => {
@@ -34,7 +25,7 @@ function InputCountry({number, setNumber}) {
     };
 
     const validatePhoneNumber = (number, max) => {
-        setIsValid(number.length === max);
+        setPhoneError(number.length === max);
     };
 
     const formatOptionLabel = ({ label, flag, name, countryCode }, { context }) => {
@@ -64,13 +55,13 @@ function InputCountry({number, setNumber}) {
                 />
                 <input
                     type="text"
-                    value={phoneNumber}
+                    value={number}
                     onChange={handlePhoneNumberChange}
                     maxLength={selectedCountry.maxDigits}
                     placeholder='000 000 000'
                 />
             </div>
-            {!isValid && phoneNumber.length > 0 && (
+            {!phoneError && number.length > 0 && (
                 <div className='error_msg'>
                     Invalid phone number - enter {selectedCountry.maxDigits} digits
                 </div>

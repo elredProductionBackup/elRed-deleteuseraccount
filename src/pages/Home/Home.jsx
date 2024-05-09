@@ -16,9 +16,7 @@ const Home = () => {
   const [otpLoader, setOtpLoader] = useState(false)
   const [existed, setExisted] = useState(false)
   const [date, setDate] = useState('')
-
-
-
+  
   const handleSubmit = async () => {
     setOtpLoader(true)
     const mobile = `+91${number}`;

@@ -10,11 +10,8 @@ import InputCountry from '../../components/InputCountry/InputCountry'
 
 const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneError, setPhoneError, noUser, otpLoader, setNoUser }) => {
     // const handleClick = () => { setPage(true) }, 
-    const isReason = reason.trim().length == 0
-    const isButtonDisabled = phoneError || number === '' || isReason === true;
-
-
-
+    const isReason = reason.trim().length === 0;
+    const isButtonDisabled = !phoneError || number === '' || isReason === true;
 
     return (
         <div className='main_page'>
@@ -47,7 +44,7 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
                             />
                     </div>
                     {phoneError && <div className="error_number">Enter valid phone number</div>} */}
-                    <InputCountry number={number} setNumber={setNumber}/>
+                    <InputCountry number={number} setNumber={setNumber} phoneError={phoneError} setPhoneError={setPhoneError}/>
                 </div>
                 <div className="main_page_question">
                     Why are you deleting your account?
