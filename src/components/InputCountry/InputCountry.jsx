@@ -31,7 +31,7 @@ function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefi
 
     const formatOptionLabel = ({ label, flag, name, countryCode }, { context }) => {
         return context === "value" ? (
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent:"center" }}>
                 {countryCode}
             </div>
         ) : (
