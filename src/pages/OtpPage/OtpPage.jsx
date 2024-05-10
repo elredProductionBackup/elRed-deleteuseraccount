@@ -10,7 +10,7 @@ import axios from "axios";
 import { formatPhoneNumber } from "../../functions";
 import SavingChangesOverlay from "../../components/SavingChangesOverlay/SavingChangesOverlay";
 
-const OtpPage = ({ number, reason, transactionId, resendOtp, setExisted, setDate }) => {
+const OtpPage = ({ number, reason, transactionId, resendOtp, setExisted, setDate, countryPrefix }) => {
   const { REACT_APP_API_ENDPOINT } = process.env
   const [otp, setOtp] = useState("");
   const [incorrectOtp, setIncorrectOtp] = useState(false);
@@ -29,7 +29,7 @@ const OtpPage = ({ number, reason, transactionId, resendOtp, setExisted, setDate
   const submitRequest = async () => {
     setConfirm(false)
     setSubmittingOverlay(true)
-    const data = { reason, otp, transactionId, phone: `+91${number}` }
+    const data = { reason, otp, transactionId, phone: countryPrefix+number }
     try {
       const res = await axios.post(`${REACT_APP_API_ENDPOINT}/webViewDeleteAccountVerifyOtp`, data)
       if (res?.data?.success) {

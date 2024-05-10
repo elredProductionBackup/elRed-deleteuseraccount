@@ -8,7 +8,9 @@ import DeleteInstructions from '../../components/DeleteInstructions/DeleteInstru
 import { isMacOs } from 'react-device-detect';
 import InputCountry from '../../components/InputCountry/InputCountry'
 
-const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneError, setPhoneError, noUser, otpLoader, setNoUser }) => {
+const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneError, setPhoneError, noUser, otpLoader, setNoUser,
+    countryPrefix, setCountryPrefix
+ }) => {
     // const handleClick = () => { setPage(true) }, 
     const isReason = reason.trim().length === 0;
     const isButtonDisabled = !phoneError || number === '' || isReason === true;
@@ -44,7 +46,7 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
                             />
                     </div>
                     {phoneError && <div className="error_number">Enter valid phone number</div>} */}
-                    <InputCountry number={number} setNumber={setNumber} phoneError={phoneError} setPhoneError={setPhoneError}/>
+                    <InputCountry number={number} setNumber={setNumber} phoneError={phoneError} setPhoneError={setPhoneError} countryPrefix={countryPrefix} setCountryPrefix={setCountryPrefix}/>
                 </div>
                 <div className="main_page_question">
                     Why are you deleting your account?
