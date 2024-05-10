@@ -16,10 +16,11 @@ const Home = () => {
   const [otpLoader, setOtpLoader] = useState(false)
   const [existed, setExisted] = useState(false)
   const [date, setDate] = useState('')
-  
+  const [countryPrefix, setCountryPrefix] = useState("+91")
+
   const handleSubmit = async () => {
     setOtpLoader(true)
-    const mobile = `+91${number}`;
+    const mobile = countryPrefix + number;
     try {
       const res = await axios.post(
         `${REACT_APP_API_ENDPOINT}/webViewDeleteAccountSendOtp`,
@@ -61,6 +62,8 @@ const Home = () => {
       console.log(error);
     }
   };
+
+  console.log(countryPrefix,reason, '----------->')
   return (
     <div>
       {existed ? (
@@ -76,6 +79,7 @@ const Home = () => {
             setExisted={setExisted}
             date={date}
             setDate={setDate}
+            countryPrefix={countryPrefix}
           />
         ) : (
           <MainPage
@@ -91,6 +95,8 @@ const Home = () => {
             otpLoader={otpLoader}
             setOtpLoader={setOtpLoader}
             setNoUser={setNoUser}
+            setCountryPrefix={setCountryPrefix}
+            countryPrefix={countryPrefix}
           />
         )
       )}

@@ -3,12 +3,13 @@ import Select from 'react-select';
 import './InputCountry.scss';
 import { countryData } from './countryData';
 
-function InputCountry({number, setNumber,phoneError, setPhoneError}) {
+function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefix, setCountryPrefix}) {
     const [selectedCountry, setSelectedCountry] = useState(countryData[0]);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [isValid, setIsValid] = useState(true);
 
     const handleCountryChange = selectedOption => {
+        setCountryPrefix(selectedOption.countryCode)
         setSelectedCountry(selectedOption);
         // setPhoneNumber('');
         setNumber('');
