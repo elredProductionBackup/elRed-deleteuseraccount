@@ -1,21 +1,22 @@
 import { useState } from 'react';
-import Select from 'react-select';
 import './InputCountry.scss';
-import { countryData } from './countryData';
+// import { countryData } from './countryData';
+import { countryCodesData } from "../SearchableCountryCodes/countryCodesData";
+import SearchableCountryCodes from "../SearchableCountryCodes/SearchableCountryCodes";
 
 function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefix, setCountryPrefix}) {
-    const [selectedCountry, setSelectedCountry] = useState(countryData[0]);
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [isValid, setIsValid] = useState(true);
+    const [selectedCountry, setSelectedCountry] = useState(countryCodesData[0]);
+    // const [phoneNumber, setPhoneNumber] = useState('');
+    // const [isValid, setIsValid] = useState(true);
 
-    const handleCountryChange = selectedOption => {
-        setCountryPrefix(selectedOption.countryCode)
-        setSelectedCountry(selectedOption);
-        // setPhoneNumber('');
-        setNumber('');
-        // setIsValid(true);
-        setPhoneError(false)
-    };
+    // const handleCountryChange = selectedOption => {
+    //     setCountryPrefix(selectedOption.countryCode)
+    //     setSelectedCountry(selectedOption);
+    //     // setPhoneNumber('');
+    //     setNumber('');
+    //     // setIsValid(true);
+    //     setPhoneError(false)
+    // };
 
     const handlePhoneNumberChange = (event) => {
         let inputNumber = event.target.value.replace(/\D/g, '');
@@ -29,37 +30,48 @@ function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefi
         setPhoneError(number.length === max);
     };
 
-    const formatOptionLabel = ({ label, flag, name, countryCode }, { context }) => {
-        return context === "value" ? (
-            <div style={{ display: "flex", alignItems: "center", justifyContent:"center" }}>
-                {countryCode}
-            </div>
-        ) : (
-            <div style={{ display: "flex", alignItems: "center" }}>
-                <span style={{ minWidth: 35 }}>{countryCode}</span>
-                <img src={flag} alt={label} style={{ width: 24, marginRight: 10 }} />
-                {name}
-            </div>
-        );
+    // const formatOptionLabel = ({ label, flag, name, countryCode }, { context }) => {
+    //     return context === "value" ? (
+    //         <div style={{ display: "flex", alignItems: "center", justifyContent:"center" }}>
+    //             {countryCode}
+    //         </div>
+    //     ) : (
+    //         <div style={{ display: "flex", alignItems: "center" }}>
+    //             <span style={{ minWidth: 35 }}>{countryCode}</span>
+    //             <img src={flag} alt={label} style={{ width: 24, marginRight: 10 }} />
+    //             {name}
+    //         </div>
+    //     );
+    // };
+
+    const numberPlaceholderMapper = (selectedCountry) => {
+        let zeroes = "";
+        for (let i = 0; i < selectedCountry?.maxDigits; i++) {
+            zeroes += "0"
+        }
+        return zeroes;
     };
 
     return (
         <div className="">
             <div className='country_select'>
-                <Select
+                {/* <Select
                     value={selectedCountry}
                     onChange={handleCountryChange}
                     options={countryData}
                     formatOptionLabel={formatOptionLabel}
                     getOptionLabel={option => option.name}
                     isSearchable={false}
-                />
+                /> */}
+                <SearchableCountryCodes countryCodesData={countryCodesData} setNumber={setNumber} setPhoneError={setPhoneError}
+                    selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry} setCountryPrefix={setCountryPrefix} />
                 <input
                     type="text"
                     value={number}
                     onChange={handlePhoneNumberChange}
                     maxLength={selectedCountry.maxDigits}
-                    placeholder='000 000 000'
+                    placeholder={numberPlaceholderMapper(selectedCountry)}
+                    className="country_select_input_field"
                 />
             </div>
             {!phoneError && number.length > 0 && (
