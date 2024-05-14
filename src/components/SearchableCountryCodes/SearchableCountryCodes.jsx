@@ -62,7 +62,6 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
                         <div className="searchable-country-codes-search-icon-container">
                             <img src={searchIcon} alt="" className="searchable-country-codes-search-icon" />
                         </div>
-                        <span style={{ marginTop: "-4px" }}>|</span>
                         <input type="text" value={searchVal} onChange={(e) => handleDropdownSearch(e)} ref={inputRef}
                             placeholder="Search by country code / name" className="searchable-country-codes-search-input"/>
                     </div>
