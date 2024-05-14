@@ -63,7 +63,6 @@ const Home = () => {
     }
   };
 
-  console.log(countryPrefix,reason, '----------->')
   return (
     <div>
       {existed ? (
