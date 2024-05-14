@@ -4,10 +4,9 @@ import searchIcon from "../../assets/searchIcon.svg";
 import DownIcon from "../../assets/red-down-icon.svg";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
 
-const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, setSelectedCountry, setCountryPrefix }) => {
+const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, selectedCountry, setSelectedCountry, setCountryPrefix }) => {
     const [showList, setShowList] = useState(false);
     const [countryCodeList, setCountryCodeList] = useState(countryCodesData);
-    const [selectedCode, setSelectedCode] = useState(countryCodesData[0]?.countryCode);
     const [searchVal, setSearchVal] = useState("");
     const inputRef = useRef();
     const dropdownRef = useRef();
@@ -21,7 +20,6 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
     const selectCodeFromList = (country) => {
         setSelectedCountry(country);
         setCountryPrefix(country?.countryCode);
-        setSelectedCode(country?.countryCode);
         setShowList(false);
         setNumber("");
         setPhoneError(false);
@@ -46,7 +44,7 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
         );
         const newList = [...new Set([...filteredList1, ...filteredList2])];
         setCountryCodeList(newList);
-    }, [searchVal]);
+    }, [searchVal]); //eslint-disable-line
 
     useEffect(() => {
         if (showList) inputRef?.current?.focus();
@@ -55,7 +53,7 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
     return (
         <div ref={dropdownRef} className="searchable-country-codes-main-container">
             <div className="searchable-country-codes-top-field" onClick={() => setShowList(!showList)}>
-                <span className="codes-top-field-text">{selectedCode}</span>
+                <span className="codes-top-field-text">{selectedCountry?.countryCode}</span>
                 <img src={DownIcon} alt="" className="searchable-country-codes-down-icon" />
             </div>
             {showList ? 
@@ -73,7 +71,7 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
                             countryCodeList?.map((item, index) => 
                                 <div key={item?.id}>
                                     {index !== 0 && <hr className="country-codes-list-divider-border" />}
-                                    <div className={selectedCode === item.countryCode ? "country-codes-list-item-single country-codes-list-item-single-active" 
+                                    <div className={selectedCountry?.countryCode === item?.countryCode ? "country-codes-list-item-single country-codes-list-item-single-active" 
                                         : "country-codes-list-item-single"} onClick={() => selectCodeFromList(item)} >
                                         <div className="country-codes-list-item-code-num">{item?.countryCode}</div>
                                         <img src={item?.countryFlagIcon} alt="" className="country-codes-list-item-flag"/>

@@ -46,7 +46,7 @@ function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefi
 
     const numberPlaceholderMapper = (selectedCountry) => {
         let zeroes = "";
-        for(let i = 0; i < selectedCountry?.maxDigits; i++) {
+        for (let i = 0; i < selectedCountry?.maxDigits; i++) {
             zeroes += "0"
         }
         return zeroes;
@@ -64,7 +64,7 @@ function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefi
                     isSearchable={false}
                 /> */}
                 <SearchableCountryCodes countryCodesData={countryCodesData} setNumber={setNumber} setPhoneError={setPhoneError}
-                    setSelectedCountry={setSelectedCountry} setCountryPrefix={setCountryPrefix} />
+                    selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry} setCountryPrefix={setCountryPrefix} />
                 <input
                     type="text"
                     value={number}
