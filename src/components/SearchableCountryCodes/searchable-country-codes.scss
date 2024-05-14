@@ -29,7 +29,7 @@
     }
     
     ::-webkit-scrollbar {
-        width: 3px !important;
+        width: 2px !important;
     }
     
     ::-webkit-scrollbar-thumb {
@@ -40,6 +40,9 @@
     ::-webkit-scrollbar-thumb:hover {
         background: rgba(217, 217, 217, 1) !important;
     }
+
+    -ms-overflow-style: auto;  /* IE and Edge */
+    scrollbar-width: auto;  /* Firefox */
     
     .searchable-country-codes-dropdown {
         position: absolute;
@@ -126,6 +129,22 @@
         .country-codes-list-container {
             max-height: 115px;
             overflow: auto;
+
+            ::-webkit-scrollbar {
+                width: 2px !important;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: rgba(217, 217, 217, 1) !important;
+                border-radius: 1px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: rgba(217, 217, 217, 1) !important;
+            }
+
+            -ms-overflow-style: auto;  /* IE and Edge */
+            scrollbar-width: auto;  /* Firefox */
     
             .country-codes-list-item-single {
                 display: flex;
