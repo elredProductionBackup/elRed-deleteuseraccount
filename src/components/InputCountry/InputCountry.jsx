@@ -19,7 +19,8 @@ function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefi
     // };
 
     const handlePhoneNumberChange = (event) => {
-        let inputNumber = event.target.value.replace(/\D/g, '');
+        let inputNumber = event.target.value.replace(/\s/g, '');
+        inputNumber = inputNumber.replace(/\D/g, '');
         inputNumber = inputNumber.slice(0, selectedCountry.maxDigits);
         // setPhoneNumber(inputNumber);
         setNumber(inputNumber);
@@ -69,7 +70,7 @@ function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefi
                     type="text"
                     value={number}
                     onChange={handlePhoneNumberChange}
-                    maxLength={selectedCountry.maxDigits}
+                    // maxLength={selectedCountry.maxDigits}
                     placeholder={numberPlaceholderMapper(selectedCountry)}
                     className="country_select_input_field"
                     inputMode='numeric'
