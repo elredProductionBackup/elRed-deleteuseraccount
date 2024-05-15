@@ -4,11 +4,13 @@ import searchIcon from "../../assets/searchIcon.svg";
 import DownIcon from "../../assets/red-down-icon.svg";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
 import CountryDropdownListItem from "./CountryDropdownListItem/CountryDropdownListItem";
+import { Spinner } from "react-bootstrap";
 
 const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, selectedCountry, setSelectedCountry, setCountryPrefix }) => {
     const [showList, setShowList] = useState(false);
     const [countryCodeList, setCountryCodeList] = useState(countryCodesData);
     const [searchVal, setSearchVal] = useState("");
+    const [searchIconLoader, setSearchIconLoader] = useState(true);
     const inputRef = useRef();
     const dropdownRef = useRef();
 
@@ -47,6 +49,10 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
         setCountryCodeList(newList);
     }, [searchVal]); //eslint-disable-line
 
+    useEffect(() => {
+        setSearchIconLoader(true);
+    }, [showList]);
+
     // useEffect(() => {
     //     if (showList) inputRef?.current?.focus();
     // }, [showList]);
@@ -61,7 +67,9 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
                 <div className="searchable-country-codes-dropdown">
                     <div className="searchable-country-codes-search-container">
                         <div className="searchable-country-codes-search-icon-container">
-                            <img src={searchIcon} alt="" className="searchable-country-codes-search-icon" />
+                            <Spinner variant="danger" className={searchIconLoader ? "searchable-country-codes-search-icon-loader" : "d-none"} />
+                            <img src={searchIcon} alt="" className={searchIconLoader ? "d-none" : "searchable-country-codes-search-icon"} 
+                                onLoad={() => setSearchIconLoader(false)} />
                         </div>
                         <input type="text" value={searchVal} onChange={(e) => handleDropdownSearch(e)} ref={inputRef}
                             placeholder="Search by country code / name" className="searchable-country-codes-search-input"/>
