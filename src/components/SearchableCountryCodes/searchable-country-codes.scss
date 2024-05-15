@@ -169,6 +169,11 @@
                     height: 14px;
                     width: 24px;
                     pointer-events: none;
+                    border-radius: 0;
+                }
+
+                .country-codes-list-item-flag-border {
+                    border: 0.5px solid #d8d2d2;
                 }
         
                 .country-codes-list-item-name {

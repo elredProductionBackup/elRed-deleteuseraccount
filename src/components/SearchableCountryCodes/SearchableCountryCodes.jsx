@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import searchIcon from "../../assets/searchIcon.svg";
 import DownIcon from "../../assets/red-down-icon.svg";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
+import CountryDropdownListItem from "./CountryDropdownListItem/CountryDropdownListItem";
 
 const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, selectedCountry, setSelectedCountry, setCountryPrefix }) => {
     const [showList, setShowList] = useState(false);
@@ -69,15 +70,8 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
                         {
                             countryCodeList?.sort((a, b) => a.countryName.toLowerCase().localeCompare(b.countryName.toLowerCase()))
                                 ?.map((item, index) => 
-                                <div key={item?.id}>
-                                    {index !== 0 && <hr className="country-codes-list-divider-border" />}
-                                    <div className={selectedCountry?.countryCode === item?.countryCode ? "country-codes-list-item-single country-codes-list-item-single-active" 
-                                        : "country-codes-list-item-single"} onClick={() => selectCodeFromList(item)} >
-                                        <div className="country-codes-list-item-code-num">{item?.countryCode}</div>
-                                        <img src={item?.countryFlagIcon} alt="" className="country-codes-list-item-flag"/>
-                                        <div className="country-codes-list-item-name">{item?.countryName}</div>
-                                    </div>
-                                </div>
+                                <CountryDropdownListItem key={item?.id} item={item} index={index} selectedCountry={selectedCountry} 
+                                    selectCodeFromList={selectCodeFromList} />
                             )
                         }
                     </div>
