@@ -72,6 +72,7 @@ function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefi
                     maxLength={selectedCountry.maxDigits}
                     placeholder={numberPlaceholderMapper(selectedCountry)}
                     className="country_select_input_field"
+                    inputMode='numeric'
                 />
             </div>
             {phoneError && number.length > 0 && (
