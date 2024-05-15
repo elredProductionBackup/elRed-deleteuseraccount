@@ -34,7 +34,12 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
     }, [showList]); // eslint-disable-line
 
     const handleDropdownSearch = (e) => {
-        setSearchVal(e.target.value);
+        const searchInput = e.target.value?.trimStart();
+        if (/^\+?[a-zA-Z0-9 ]*$/.test(searchInput)) {
+            setSearchVal(searchInput);
+        } else {
+            return false;
+        }
     };
 
     useEffect(() => {
