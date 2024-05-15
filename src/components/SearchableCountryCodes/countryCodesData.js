@@ -18,7 +18,7 @@ export const countryCodesData = [
     { id: "4", label: "AU", countryName: "Australia", maxDigits: 9, countryCode: "+61", countryFlagIcon: australia },
     { id: "5", label: "Bahrain", countryName: "Bahrain", maxDigits: 8, countryCode: "+973", countryFlagIcon: bahrain },
     { id: "6", label: "France", countryName: "France", maxDigits: 9, countryCode: "+33", countryFlagIcon: france },
-    { id: "7", label: "Laos", countryName: "Laos", maxDigits: 8, countryCode: "+856", countryFlagIcon: laos },
+    { id: "7", label: "Laos", countryName: "Lao People's Democratic", maxDigits: 8, countryCode: "+856", countryFlagIcon: laos },
     { id: "8", label: "Poland", countryName: "Poland", maxDigits: 9, countryCode: "+48", countryFlagIcon: poland },
     { id: "9", label: "Portugal", countryName: "Portugal", maxDigits: 9, countryCode: "+351", countryFlagIcon: portugal },
     { id: "10", label: "United Kingdom", countryName: "United Kingdom", maxDigits: 10, countryCode: "+44", countryFlagIcon: uk },
