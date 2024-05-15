@@ -67,7 +67,8 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
                     </div>
                     <div className="country-codes-list-container">
                         {
-                            countryCodeList?.map((item, index) => 
+                            countryCodeList?.sort((a, b) => a.countryName.toLowerCase().localeCompare(b.countryName.toLowerCase()))
+                                ?.map((item, index) => 
                                 <div key={item?.id}>
                                     {index !== 0 && <hr className="country-codes-list-divider-border" />}
                                     <div className={selectedCountry?.countryCode === item?.countryCode ? "country-codes-list-item-single country-codes-list-item-single-active" 
