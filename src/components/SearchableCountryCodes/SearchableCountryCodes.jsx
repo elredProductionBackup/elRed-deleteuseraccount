@@ -6,7 +6,8 @@ import useOnClickOutside from "../../Hooks/useOnClickOutside";
 import CountryDropdownListItem from "./CountryDropdownListItem/CountryDropdownListItem";
 import { Spinner } from "react-bootstrap";
 
-const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, selectedCountry, setSelectedCountry, setCountryPrefix }) => {
+const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, selectedCountry, setSelectedCountry, 
+    setCountryPrefix, validatePhoneNumber, number }) => {
     const [showList, setShowList] = useState(false);
     const [countryCodeList, setCountryCodeList] = useState(countryCodesData);
     const [searchVal, setSearchVal] = useState("");
@@ -21,11 +22,13 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
     useOnClickOutside(dropdownRef, handlClose);
 
     const selectCodeFromList = (country) => {
+        const newNumber = number?.slice(0, country?.maxDigits);
+        setNumber(newNumber);
         setSelectedCountry(country);
         setCountryPrefix(country?.countryCode);
         setShowList(false);
-        setNumber("");
         setPhoneError(false);
+        validatePhoneNumber(newNumber, country?.maxDigits);
     };
 
     useEffect(() => {
