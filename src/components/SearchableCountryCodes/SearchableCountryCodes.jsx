@@ -28,13 +28,15 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
         setCountryPrefix(country?.countryCode);
         setShowList(false);
         setPhoneError(false);
+        setSearchVal("");
+        setCountryCodeList(countryCodesData);
         validatePhoneNumber(newNumber, country?.maxDigits);
     };
 
-    useEffect(() => {
-        setSearchVal("");
-        setCountryCodeList(countryCodesData);
-    }, [showList]); // eslint-disable-line
+    // useEffect(() => {
+    //     setSearchVal("");
+    //     setCountryCodeList(countryCodesData);
+    // }, [showList]); // eslint-disable-line
 
     const handleDropdownSearch = (e) => {
         const searchInput = e.target.value?.trimStart();
