@@ -19,7 +19,8 @@ function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefi
     // };
 
     const handlePhoneNumberChange = (event) => {
-        let inputNumber = event.target.value.replace(/\D/g, '');
+        let inputNumber = event.target.value.replace(/\s/g, '');
+        inputNumber = inputNumber.replace(/\D/g, '');
         inputNumber = inputNumber.slice(0, selectedCountry.maxDigits);
         // setPhoneNumber(inputNumber);
         setNumber(inputNumber);
@@ -27,7 +28,7 @@ function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefi
     };
 
     const validatePhoneNumber = (number, max) => {
-        setPhoneError(number.length === max);
+        setPhoneError(number.length !== max || number[0] === "0");
     };
 
     // const formatOptionLabel = ({ label, flag, name, countryCode }, { context }) => {
@@ -69,14 +70,17 @@ function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefi
                     type="text"
                     value={number}
                     onChange={handlePhoneNumberChange}
-                    maxLength={selectedCountry.maxDigits}
+                    // maxLength={selectedCountry.maxDigits}
                     placeholder={numberPlaceholderMapper(selectedCountry)}
                     className="country_select_input_field"
+                    inputMode='numeric'
                 />
             </div>
-            {!phoneError && number.length > 0 && (
+            {phoneError && number.length > 0 && (
                 <div className='error_msg'>
-                    Invalid phone number - enter {selectedCountry.maxDigits} digits
+                    {/* Invalid phone number - enter {selectedCountry.maxDigits} digits */}
+                    {number?.length === selectedCountry?.maxDigits || number[0] === "0" ? "Invalid phone number" :
+                    `Invalid phone number - enter ${selectedCountry?.maxDigits} digits`}
                 </div>
             )}
         </div>

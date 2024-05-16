@@ -89,6 +89,13 @@
                     margin-top: -3px;
                     pointer-events: none;
                 }
+
+                .searchable-country-codes-search-icon-loader {
+                    height: 16px;
+                    width: 16px;
+                    margin-top: -3px;
+                    border-width: 1px;
+                }
             }
     
             .searchable-country-codes-search-input {
@@ -169,6 +176,11 @@
                     height: 14px;
                     width: 24px;
                     pointer-events: none;
+                    border-radius: 0;
+                }
+
+                .country-codes-list-item-flag-border {
+                    border: 0.5px solid #d8d2d2;
                 }
         
                 .country-codes-list-item-name {
@@ -177,8 +189,8 @@
             }
         
             .country-codes-list-item-single:hover {
-                background-color: rgb(91, 192, 223);
-                color: #fff; 
+                background-color: rgb(239, 239, 239);
+                color: #000 !important; 
             } 
         
             // .country-codes-list-item-single-active,

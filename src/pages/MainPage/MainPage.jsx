@@ -13,7 +13,7 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
  }) => {
     // const handleClick = () => { setPage(true) }, 
     const isReason = reason.trim().length === 0;
-    const isButtonDisabled = !phoneError || number === '' || isReason === true;
+    const isButtonDisabled = phoneError || number === '' || isReason === true;
 
     return (
         <div className='main_page'>
