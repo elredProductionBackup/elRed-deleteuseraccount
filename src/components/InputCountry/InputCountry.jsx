@@ -65,7 +65,8 @@ function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefi
                     isSearchable={false}
                 /> */}
                 <SearchableCountryCodes countryCodesData={countryCodesData} setNumber={setNumber} setPhoneError={setPhoneError}
-                    selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry} setCountryPrefix={setCountryPrefix} />
+                    selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry} setCountryPrefix={setCountryPrefix} 
+                    validatePhoneNumber={validatePhoneNumber} number={number} />
                 <input
                     type="text"
                     value={number}
