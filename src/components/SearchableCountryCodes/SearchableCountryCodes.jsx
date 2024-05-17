@@ -84,11 +84,13 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
                     </div>
                     <div className="country-codes-list-container">
                         {
+                            countryCodeList?.length !== 0 ?
                             countryCodeList?.sort((a, b) => a.countryName.toLowerCase().localeCompare(b.countryName.toLowerCase()))
                                 ?.map((item, index) => 
                                 <CountryDropdownListItem key={item?.id} item={item} index={index} selectedCountry={selectedCountry} 
                                     selectCodeFromList={selectCodeFromList} />
                             )
+                            : <div className="country-codes-list-no-result">No result found!</div>
                         }
                     </div>
                 </div>
