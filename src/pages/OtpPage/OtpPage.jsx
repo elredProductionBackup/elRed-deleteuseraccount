@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import _ from "lodash";
 import "./otppage.scss";
 import Button from "../../components/Button/Button";
 import TitleText from "../../components/TitleText/TitleText";
@@ -59,6 +60,15 @@ const OtpPage = ({ number, reason, transactionId, resendOtp, setExisted, setDate
     }
     setOtp(updatedOTP);
   };
+
+  const focusOut = _.debounce(() => {
+    document.activeElement.blur()
+  }, 100)
+  
+  useEffect(()=>{
+    if (otp?.toString()?.length === 6 && window?.screen?.width <= 420) 
+    focusOut()
+  },[otp])
 
   return (
     <>
