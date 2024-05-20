@@ -47,12 +47,24 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
 
     useEffect(() => {
         if (!searchVal) return setCountryCodeList(countryCodesData);
-        const filteredList1 = countryCodesData?.filter((item) => 
-            item.countryCode.toLowerCase().includes(searchVal.toLowerCase())
-        );
-        const filteredList2 = countryCodesData?.filter((item) => 
-            item.countryName.toLowerCase().includes(searchVal.toLowerCase())
-        );
+        const filteredList1 = countryCodesData?.filter((item) => item.countryCode.includes(searchVal))
+        .sort((a, b) => {
+          const aStartsWith = a.countryCode.replace("+", "").startsWith(searchVal);
+          const bStartsWith = b.countryCode.replace("+", "").startsWith(searchVal);
+          if (aStartsWith && !bStartsWith) return -1;
+          if (!aStartsWith && bStartsWith) return 1;
+          const aNumericValue = parseInt(a.countryCode.replace("+", ""), 10);
+          const bNumericValue = parseInt(b.countryCode.replace("+", ""), 10);
+          return aNumericValue - bNumericValue;
+        });
+        const filteredList2 = countryCodesData?.filter((item) =>
+            item.countryName.toLowerCase().includes(searchVal.toLowerCase())).sort((a, b) => {
+            const aStartsWith = a.countryName.toLowerCase().startsWith(searchVal.toLowerCase());
+            const bStartsWith = b.countryName.toLowerCase().startsWith(searchVal.toLowerCase());
+            if (aStartsWith && !bStartsWith) return -1;
+            if (!aStartsWith && bStartsWith) return 1;
+            return 0;
+        });
         const newList = [...new Set([...filteredList1, ...filteredList2])];
         setCountryCodeList(newList);
     }, [searchVal]); //eslint-disable-line
@@ -85,8 +97,7 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
                     <div className="country-codes-list-container">
                         {
                             countryCodeList?.length !== 0 ?
-                            countryCodeList?.sort((a, b) => a.countryName.toLowerCase().localeCompare(b.countryName.toLowerCase()))
-                                ?.map((item, index) => 
+                            countryCodeList?.map((item, index) => 
                                 <CountryDropdownListItem key={item?.id} item={item} index={index} selectedCountry={selectedCountry} 
                                     selectCodeFromList={selectCodeFromList} />
                             )
