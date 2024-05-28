@@ -61,7 +61,8 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
                 <div className="text_area_div">
                     <textarea placeholder='Type here...' value={reason} onChange={e => handleInputChange(e)} />
                 </div>
-                {isReason && <div className="reason_err">Minimum 1 character is required</div>}
+                {isReason ? <div className="reason_err">Minimum 1 character is required</div> :
+                    <div className="reason_err_invisible"></div>}
             </div>
             <Button loading={otpLoader} onClickFunction={handleSubmit} title={'Get OTP'} disable={isButtonDisabled} />
 
