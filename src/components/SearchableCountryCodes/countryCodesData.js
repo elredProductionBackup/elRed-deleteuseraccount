@@ -9,6 +9,7 @@ import laos from '../../assets/flags/la-flag.webp';
 import poland from '../../assets/flags/pl-flag.webp';
 import portugal from '../../assets/flags/pt-flag.webp';
 import uk from '../../assets/flags/uk-flag.webp';
+import usa from '../../assets/flags/us-flag.webp';
 
 export const countryCodesData =[
     {
@@ -99,5 +100,13 @@ export const countryCodesData =[
       maxDigits: 10,
       countryCode: '+44',
       countryFlagIcon: uk
+    },
+    {
+      id: '11',
+      label: 'United States',
+      countryName: 'United States',
+      maxDigits: 10,
+      countryCode: '+1',
+      countryFlagIcon: usa
     }
   ]
