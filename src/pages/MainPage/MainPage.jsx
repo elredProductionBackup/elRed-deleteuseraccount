@@ -15,6 +15,13 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
     const isReason = reason.trim().length === 0;
     const isButtonDisabled = phoneError || number === '' || isReason === true;
 
+    const handleInputChange = (e) => {
+        const regex = /^[0-9a-zA-Z\s!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~\n\r]+$/;
+        if (regex.test(e.target.value) || e.target.value === '') {
+            setReason(e.target.value);
+        } else return false;
+    }
+
     return (
         <div className='main_page'>
             <div className="main_page_content">
@@ -52,9 +59,10 @@ const MainPage = ({ number, setNumber, handleSubmit, setReason, reason, phoneErr
                     Why are you deleting your account?
                 </div>
                 <div className="text_area_div">
-                    <textarea placeholder='Type here...' value={reason} onChange={e => setReason(e.target.value)} />
+                    <textarea placeholder='Type here...' value={reason} onChange={e => handleInputChange(e)} />
                 </div>
-                {isReason && <div className="reason_err">Minimum 1 character is required</div>}
+                {isReason ? <div className="reason_err">Minimum 1 character is required</div> :
+                    <div className="reason_err_invisible"></div>}
             </div>
             <Button loading={otpLoader} onClickFunction={handleSubmit} title={'Get OTP'} disable={isButtonDisabled} />
 
