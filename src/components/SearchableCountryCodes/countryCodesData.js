@@ -10,6 +10,7 @@ import poland from '../../assets/flags/pl-flag.webp';
 import portugal from '../../assets/flags/pt-flag.webp';
 import uk from '../../assets/flags/uk-flag.webp';
 import usa from '../../assets/flags/us-flag.webp';
+import southAfrica from "../../assets/flags/sf-flag.webp";
 
 export const countryCodesData =[
     {
@@ -95,6 +96,14 @@ export const countryCodesData =[
     },
     {
       id: '10',
+      label: 'South Africa',
+      countryName: 'South Africa',
+      maxDigits: 9,
+      countryCode: '+27',
+      countryFlagIcon: southAfrica
+    },
+    {
+      id: '11',
       label: 'United Kingdom',
       countryName: 'United Kingdom',
       maxDigits: 10,
@@ -102,9 +111,9 @@ export const countryCodesData =[
       countryFlagIcon: uk
     },
     {
-      id: '11',
-      label: 'United States',
-      countryName: 'United States',
+      id: '12',
+      label: 'United States of America',
+      countryName: 'United States of America',
       maxDigits: 10,
       countryCode: '+1',
       countryFlagIcon: usa
