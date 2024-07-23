@@ -1,3 +1,4 @@
+@use '/src/App.scss' as css;
 .offcanvas.offcanvas-bottom {
   max-width: 376px !important;
   width: 100%;
@@ -11,6 +12,8 @@
     padding: 0;
 
     height: 284px;
+    border-radius: 16px 16px 0 0 ;
+    background-color: css.$textarea_bg;
     .handle {
       width: 115px;
       height: 6px;
@@ -32,11 +35,13 @@
       padding: 0 24px;
       margin-top: 12px;
       text-align: center;
+      color: css.$theme_text;
     }
 
     .action_msg {
       font-size: 14px;
       margin-top: 8px;
+      color: css.$theme_text;
       span {
         color: #e72d38;
       }
@@ -60,8 +65,9 @@
       }
 
       .no_btn {
-        border: 1px solid;
-        color: #747474;
+        border: 1px solid #747474;
+        color: css.$theme_red;
+        background-color: #fff;
       }
       .yes_btn {
         background-color: #e72d38;

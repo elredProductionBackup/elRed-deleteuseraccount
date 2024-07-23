@@ -1,3 +1,22 @@
+// DARK THEMING
+$theme_bg: #0D0D0D;
+$theme_red: #E72D38;
+$theme_light_red: #FF2130;
+$theme_light: #FFFFFF;
+$theme_grey: #525252;
+$theme_border: #909090;
+$theme_shimmer_dark: #1A1D27;
+$theme_shimmer_bg: #1E232D;
+$theme_shimmer: #242939;
+$theme_text: #fff;
+$comment_likes: #E5E5E5;
+$download_header: #04112B;
+
+// DELETE USER ACCOUNT VARIABLES
+$textarea_bg:#242426;
+$disabled_text: #A2A2A4;
+$otp_input: #363638;
+
 .main_container {
   max-width: 375px;
   width: 100%;
@@ -6,6 +25,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: $theme_bg;
+
 }
 
 

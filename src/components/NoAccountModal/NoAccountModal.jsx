@@ -1,5 +1,5 @@
 import "./noaccountmodal.scss";
-import alert from "../../assets/redalert.svg";
+import alert from "../../assets/alert.svg";
 import { useState } from "react";
 import { Spinner } from "react-bootstrap";
 

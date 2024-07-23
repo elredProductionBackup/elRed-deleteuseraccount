@@ -1,10 +1,11 @@
+@use '/src/App.scss' as css;
 .no-account-modal-container {
   position: absolute;
   top: 25%;
   left: 16px;
   width: 343px;
   border-radius: 18px;
-  background-color: #fff;
+  background-color: css.$textarea_bg;
   z-index: 9999;
 
   @media only screen and (max-width: 500px) {
@@ -14,12 +15,12 @@
     right: 4%;
     width: 92%;
     border-radius: 18px;
-    background-color: #fff;
     z-index: 9999;
   }
 
   .no-account-modal {
     padding: 30px 25px;
+    
 
     .no-account-alert-img-container {
       display: flex;
@@ -54,6 +55,7 @@
       font-weight: 500;
       line-height: 37px;
       text-align: center;
+      color: css.$theme_text;
     }
 
     .no-account-popup-text {
@@ -61,7 +63,7 @@
       font-weight: 500;
       line-height: 21px;
       text-align: center;
-      color: rgba(104, 104, 104, 1);
+      color: css.$comment_likes;
     }
 
     .no-account-popup-btn {
