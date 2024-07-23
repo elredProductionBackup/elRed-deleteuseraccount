@@ -1,3 +1,5 @@
+@use '/src/App.scss' as css;
+
 .btn_div {
   padding: 30px 20px;
   padding-top: 20px;
@@ -5,6 +7,7 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  background-color: css.$theme_bg;
   .button_main {
     background-color: #e72d38 !important;
     cursor: pointer;

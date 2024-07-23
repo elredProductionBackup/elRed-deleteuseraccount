@@ -1,6 +1,8 @@
+@use '/src/App.scss' as css;
+
 .otp-page-phone-number {
   font-size: 14px;
-  color: #313030;
+  color: #AEAEB2;
   line-height: 21px;
   font-weight: 500;
   font-family: "AvenirPro-medium";
@@ -14,6 +16,7 @@
   font-weight: 500;
   line-height: 19.2px;
   text-align: left;
+  color: css.$theme_text;
 }
 
 .otp-input-wrapper-div {

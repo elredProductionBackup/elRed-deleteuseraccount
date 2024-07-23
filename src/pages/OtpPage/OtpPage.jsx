@@ -101,6 +101,7 @@ const OtpPage = ({ number, reason, transactionId, resendOtp, setExisted, setDate
                     }
                     type="text"
                     inputMode="decimal"
+                    style={{background:"#363638", color:"white", textAlign:"center"}}
                   />
                 )}
               />
