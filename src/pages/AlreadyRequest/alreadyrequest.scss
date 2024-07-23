@@ -1,3 +1,5 @@
+@use '/src/App.scss' as css;
+
 .already_request_success_page {
     .already_request_inner_success_page {
       height: calc(100vh - 150px);
@@ -34,12 +36,14 @@
           font-weight: 500;
           line-height: 37px;
           margin-top: 26px;
+          color: css.$theme_text;
         }
         .already_request_success_desc {
           margin-top: 10px;
           font-size: 16px;
           font-weight: 400;
           line-height: 28px;
+          color: css.$comment_likes;
   
           .already_request_note {
             color: #e72d38;

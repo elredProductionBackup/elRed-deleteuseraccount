@@ -1,3 +1,5 @@
+@use '/src/App.scss' as css;
+
 .searchable-country-codes-main-container {
     display: inline-flex;
     position: relative;
@@ -6,7 +8,7 @@
         width: 74px;
         height: 46px;
         border-radius: 8px;
-        background: rgba(247, 247, 247, 1);
+        background: css.$textarea_bg;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
@@ -19,7 +21,7 @@
             font-size: 16px;
             font-weight: 500;
             line-height: 19.2px;
-            color: #000;
+            color: css.$theme_text;
         }
 
         .searchable-country-codes-down-icon {
@@ -52,13 +54,14 @@
         width: 335px;
         max-height: 161px;
         border-radius: 0px 0px 4px 4px;
-        background-color: #fff;
+        background-color: css.$textarea_bg;
         box-shadow: 0px 9px 12px 1px rgba(0, 0, 0, 0.08);
         padding: 6px 6px 6px 6px;
         overflow: auto;
         display: flex;
         flex-direction: column;
         overflow: hidden;
+        margin-top: 5px;
     
         @media only screen and (max-width: 450px) {
             width: calc(100vw - 41px);
@@ -69,9 +72,19 @@
             align-items: center;
             height: 35px;
             padding-top: 3px;
-            background-color: #fff;
+            background-color: css.$textarea_bg;
             width: calc(100% - 9px);
-            border-bottom: 2px solid rgba(239, 239, 239, 1);
+            // border-bottom: 2px solid rgba(239, 239, 239, 1);
+            border-bottom: 2px solid #444446;
+
+            input{
+                background: css.$textarea_bg;
+                color: css.$theme_text;
+
+                &::placeholder{
+                    color: css.$comment_likes;
+                }
+            }
     
             .searchable-country-codes-search-icon-container {
                 display: inline-flex;
@@ -81,6 +94,7 @@
                 width: 35px;
                 user-select: none;
                 -webkit-user-select: none;
+                
                 // border-right: 0.8px solid rgba(35, 35, 35, 1);
     
                 .searchable-country-codes-search-icon {
@@ -127,7 +141,7 @@
         }
     
         .country-codes-list-divider-border {
-            border: 1px solid rgba(239, 239, 239, 1);
+            border: 0.6px solid #444446;
             margin: 0 6px 0 0;
             opacity: 1;
         }
@@ -166,6 +180,7 @@
                 user-select: none;
                 -webkit-user-select: none;
                 margin-right: 6px;
+                color: css.$theme_text;
         
                 .country-codes-list-item-code-num {
                     width: 35px;
@@ -200,8 +215,8 @@
             // }
 
             .country-codes-list-item-single-active {
-                background-color: #fff;
-                color: #000; 
+                background-color: css.$textarea_bg;
+                color: css.$theme_text; 
             }
 
             .country-codes-list-no-result {

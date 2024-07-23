@@ -1,6 +1,6 @@
-import img1 from './assets/logo1.svg'
-import img2 from './assets/logo2.svg'
-import img3 from './assets/logo3.svg'
+import img1 from './assets/card_dark.svg'
+import img2 from './assets/shop_dark.svg'
+import img3 from './assets/bookmarks_dark.svg'
 
 export const deleteInstructions = [
     {

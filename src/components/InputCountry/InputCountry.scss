@@ -1,3 +1,5 @@
+@use '/src/App.scss' as css;
+
 .country_select {
   display: flex;
   align-items: normal;
@@ -13,11 +15,15 @@
     border: none;
     padding: 10px 0;
     width: 100%;
-    background-color: #f7f7f7 !important;
+    background-color: css.$textarea_bg !important;
     border-radius: 8px;
     height: 46px;
     padding: 0 18px;
-    color: #000;
+    color: css.$theme_text;
+
+    &::placeholder{
+      color: #A2A2A4;
+    }
   }
 }
 

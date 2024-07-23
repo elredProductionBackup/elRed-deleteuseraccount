@@ -10,7 +10,7 @@ const DeleteInstructions = ({ logo, desc }) => {
                 <div className={imgLoading ? "d-flex align-items-center justify-content-center icon-spinner-container" : "d-none"}>
                     <Spinner variant='danger' className="loader-spinner-instructions-icon" />
                 </div>
-                <img src={logo} alt="" onLoad={() => setimgLoading(false)} className={imgLoading ? "d-none" : "d-block"} />
+                <div className="img_div" ><img src={logo} alt="" onLoad={() => setimgLoading(false)} className={imgLoading ? "d-none" : "d-block"} /></div>
                 <div className="text_div">
                     {desc}
                 </div>
