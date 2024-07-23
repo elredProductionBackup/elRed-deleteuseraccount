@@ -15,7 +15,7 @@ const AlreadyRequest = ({ date }) => {
             <div className='already_request_inner_success_page'>
               <div className='already_request_inner_success_page_container'>
                 <div className={imgLoading ? 'already_request_img_shimmer_container' : "d-none"}>
-                    <Skeleton height={178} width={178} baseColor={"#D6DAE5"} circle
+                    <Skeleton height={178} width={178} baseColor={"#242939"} circle
                         className={imgLoading ? "already_request_img_ok_shimmer" : "d-none"} />
                 </div>
                 <img src={logo} alt="" onLoad={() => setImgLoading(false)}

@@ -1,3 +1,4 @@
+@use '/src/App.scss' as css;
 .success_page {
   .inner_success_page {
     height: calc(100vh - 150px);
@@ -34,12 +35,14 @@
         font-weight: 500;
         line-height: 37px;
         margin-top: 26px;
+        color: css.$theme_text;
       }
       .success_desc {
         margin-top: 10px;
         font-size: 16px;
         font-weight: 400;
         line-height: 28px;
+        color: css.$comment_likes;
 
         .note {
           color: #e72d38;
