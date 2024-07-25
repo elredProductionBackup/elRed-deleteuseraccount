@@ -204,8 +204,8 @@
             }
         
             .country-codes-list-item-single:hover {
-                background-color: rgb(239, 239, 239);
-                color: #000 !important; 
+                background-color: rgba(204, 204, 204, 0.1);
+                color: rgba(229, 229, 229, 1) !important; 
             } 
         
             // .country-codes-list-item-single-active,
@@ -215,8 +215,8 @@
             // }
 
             .country-codes-list-item-single-active {
-                background-color: css.$textarea_bg;
-                color: css.$theme_text; 
+                background-color: rgba(204, 204, 204, 0.1);
+                color: rgba(229, 229, 229, 1) !important; 
             }
 
             .country-codes-list-no-result {
