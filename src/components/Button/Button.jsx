@@ -6,7 +6,10 @@ const Button = ({ onClickFunction, title, disable, loading }) => {
     return (
         <div className='btn_div'>
             <button className={disable ? `btn button_main_disable` : `btn button_main`} onClick={loading ? null : onClickFunction}>
-                {loading ? <Spinner animation="border" /> : title}
+                {loading ? 
+                    <div className="submit_button_spinner_wrapper">
+                        <Spinner animation="border" className="submit_button_spinner" />
+                    </div> : title}
             </button>
         </div>
     )
