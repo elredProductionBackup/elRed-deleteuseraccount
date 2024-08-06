@@ -62,6 +62,7 @@
         flex-direction: column;
         overflow: hidden;
         margin-top: 5px;
+        border: 1px solid #909090;
     
         @media only screen and (max-width: 450px) {
             width: calc(100vw - 41px);
@@ -223,7 +224,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: #000;
+                color: #ffffff;
                 font-size: 14px;
                 font-weight: 500;
                 line-height: 35px;
