@@ -94,7 +94,7 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
                         <input type="text" value={searchVal} onChange={(e) => handleDropdownSearch(e)} ref={inputRef}
                             placeholder="Search by country code / name" className="searchable-country-codes-search-input"/>
                     </div>
-                    <div className="country-codes-list-container">
+                    <div className={countryCodeList?.length !== 0 ? "country-codes-list-container" : "country-codes-list-container overflow-hidden"}>
                         {
                             countryCodeList?.length !== 0 ?
                             countryCodeList?.map((item, index) => 
