@@ -122,7 +122,7 @@
                 letter-spacing: 1px;
                 text-align: left;
                 margin-left: 4px;
-                width: calc(100% - 30px);
+                width: calc(100% - 65px);
                 height: 30px;
             }
 
@@ -138,6 +138,15 @@
             .searchable-country-codes-search-input:focus {
                 border: none;
                 outline: none;
+            }
+
+            .searchable-country-codes-clear-icon {
+                position: absolute;
+                right: 20px;
+                height: 16.8px;
+                width: 16.8px;
+                cursor: pointer;
+                pointer-events: auto;
             }
         }
     

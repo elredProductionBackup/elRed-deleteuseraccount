@@ -5,6 +5,7 @@ import DownIcon from "../../assets/red-down-icon.svg";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
 import CountryDropdownListItem from "./CountryDropdownListItem/CountryDropdownListItem";
 import { Spinner } from "react-bootstrap";
+import crossIcon from "../../assets/cross-png-4x.png" 
 
 const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, selectedCountry, setSelectedCountry, 
     setCountryPrefix, validatePhoneNumber, number }) => {
@@ -93,6 +94,11 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
                         </div>
                         <input type="text" value={searchVal} onChange={(e) => handleDropdownSearch(e)} ref={inputRef}
                             placeholder="Search by country code / name" className="searchable-country-codes-search-input"/>
+                        {searchVal && (
+                            <img src={crossIcon} alt=""  className="searchable-country-codes-clear-icon" 
+                                onClick={() => setSearchVal("")} 
+                            />
+                        )}
                     </div>
                     <div className={countryCodeList?.length !== 0 ? "country-codes-list-container" : "country-codes-list-container overflow-hidden"}>
                         {
