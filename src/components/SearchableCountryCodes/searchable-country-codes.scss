@@ -79,7 +79,7 @@
             padding-top: 3px;
             background-color: css.$textarea_bg;
             width: calc(100% - 8px);
-            border-bottom: 2px solid #909090 !important;
+            border-bottom: 1px solid #909090 !important;
 
             input{
                 background: css.$textarea_bg;
@@ -154,7 +154,10 @@
         }
     
         .country-codes-list-divider-border {
-            border: 0.6px solid #909090 !important;
+            border-top: 1px solid #909090 !important;
+            border-right: none !important;
+            border-bottom: none !important;
+            border-left: none !important;
             margin: 0 6px 0 0;
             opacity: 1;
             color: #909090 !important;
