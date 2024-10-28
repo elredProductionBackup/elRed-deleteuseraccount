@@ -82,7 +82,8 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
         <div ref={dropdownRef} className="searchable-country-codes-main-container">
             <div className="searchable-country-codes-top-field" onClick={() => setShowList(!showList)}>
                 <span className="codes-top-field-text">{selectedCountry?.countryCode}</span>
-                <img src={DownIcon} alt="" className="searchable-country-codes-down-icon" />
+                <img src={DownIcon} alt="" className={showList ? "searchable-country-codes-down-icon searchable-country-codes-down-icon-rotate" 
+                    : "searchable-country-codes-down-icon"} />
             </div>
             {showList ? 
                 <div className="searchable-country-codes-dropdown">
