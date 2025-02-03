@@ -28,6 +28,10 @@
             height: 20px;
             width: 20px;
         }
+
+        .searchable-country-codes-down-icon-rotate {
+            transform: rotate(180deg);
+        }
     }
     
     ::-webkit-scrollbar {
@@ -56,13 +60,13 @@
         border-radius: 0px 0px 4px 4px;
         background-color: css.$textarea_bg;
         box-shadow: 0px 9px 12px 1px rgba(0, 0, 0, 0.08);
-        padding: 6px 6px 6px 6px;
+        padding: 6px 6px 6px 16px;
         overflow: auto;
         display: flex;
         flex-direction: column;
         overflow: hidden;
         margin-top: 5px;
-        border: 1px solid #909090;
+        border: 1px solid #909090 !important;
     
         @media only screen and (max-width: 450px) {
             width: calc(100vw - 41px);
@@ -71,19 +75,18 @@
         .searchable-country-codes-search-container {
             display: flex;
             align-items: center;
-            height: 35px;
+            // height: 35px;
             padding-top: 3px;
             background-color: css.$textarea_bg;
-            width: calc(100% - 9px);
-            // border-bottom: 2px solid rgba(239, 239, 239, 1);
-            border-bottom: 2px solid #444446;
+            width: calc(100% - 8px);
+            border-bottom: 1px solid #909090 !important;
 
             input{
                 background: css.$textarea_bg;
                 color: css.$theme_text;
 
                 &::placeholder{
-                    color: css.$comment_likes;
+                    color: #8E8E93 !important;
                 }
             }
     
@@ -92,7 +95,7 @@
                 align-items: center;
                 justify-content: center;
                 height: 24px;
-                width: 35px;
+                width: 24px;
                 user-select: none;
                 -webkit-user-select: none;
                 
@@ -121,9 +124,9 @@
                 line-height: 35px;
                 letter-spacing: 1px;
                 text-align: left;
-                margin-left: 4px;
-                width: calc(100% - 30px);
-                height: 30px;
+                margin-left: 8px;
+                width: calc(100% - 65px);
+                height: 29px;
             }
 
             .searchable-country-codes-search-input::placeholder {
@@ -139,12 +142,25 @@
                 border: none;
                 outline: none;
             }
+
+            .searchable-country-codes-clear-icon {
+                position: absolute;
+                right: 20px;
+                height: 16.8px;
+                width: 16.8px;
+                cursor: pointer;
+                pointer-events: auto;
+            }
         }
     
         .country-codes-list-divider-border {
-            border: 0.6px solid #444446;
+            border-top: 1px solid #909090 !important;
+            border-right: none !important;
+            border-bottom: none !important;
+            border-left: none !important;
             margin: 0 6px 0 0;
             opacity: 1;
+            color: #909090 !important;
         }
     
     
@@ -224,7 +240,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: #ffffff;
+                color: #8E8E93;
                 font-size: 14px;
                 font-weight: 500;
                 line-height: 35px;
@@ -234,3 +250,4 @@
         }
     }
 }
+

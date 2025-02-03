@@ -5,6 +5,7 @@ import DownIcon from "../../assets/red-down-icon.svg";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
 import CountryDropdownListItem from "./CountryDropdownListItem/CountryDropdownListItem";
 import { Spinner } from "react-bootstrap";
+import crossIcon from "../../assets/cross-png-4x.png" 
 
 const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, selectedCountry, setSelectedCountry, 
     setCountryPrefix, validatePhoneNumber, number }) => {
@@ -81,7 +82,8 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
         <div ref={dropdownRef} className="searchable-country-codes-main-container">
             <div className="searchable-country-codes-top-field" onClick={() => setShowList(!showList)}>
                 <span className="codes-top-field-text">{selectedCountry?.countryCode}</span>
-                <img src={DownIcon} alt="" className="searchable-country-codes-down-icon" />
+                <img src={DownIcon} alt="" className={showList ? "searchable-country-codes-down-icon searchable-country-codes-down-icon-rotate" 
+                    : "searchable-country-codes-down-icon"} />
             </div>
             {showList ? 
                 <div className="searchable-country-codes-dropdown">
@@ -93,8 +95,13 @@ const SearchableCountryCodes = ({ countryCodesData, setNumber, setPhoneError, se
                         </div>
                         <input type="text" value={searchVal} onChange={(e) => handleDropdownSearch(e)} ref={inputRef}
                             placeholder="Search by country code / name" className="searchable-country-codes-search-input"/>
+                        {searchVal && (
+                            <img src={crossIcon} alt=""  className="searchable-country-codes-clear-icon" 
+                                onClick={() => setSearchVal("")} 
+                            />
+                        )}
                     </div>
-                    <div className="country-codes-list-container">
+                    <div className={countryCodeList?.length !== 0 ? "country-codes-list-container" : "country-codes-list-container overflow-hidden"}>
                         {
                             countryCodeList?.length !== 0 ?
                             countryCodeList?.map((item, index) => 
