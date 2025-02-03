@@ -9,7 +9,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 toastConfig({ theme: 'dark' });
 toastConfig({ maxVisibleToasts: 1 });
 
-console.log('test branch...')
+console.log('Dev branch: 03 Feb')
 function App() {
   return (
     <div className='main_container'>
