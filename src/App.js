@@ -6,11 +6,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { toastConfig } from 'react-simple-toasts';
 import 'react-simple-toasts/dist/theme/dark.css'; // choose your theme
 import 'react-loading-skeleton/dist/skeleton.css'
+import axios from 'axios';
 toastConfig({ theme: 'dark' });
 toastConfig({ maxVisibleToasts: 1 });
 
 console.log('test branch...')
 function App() {
+  axios.defaults.headers.common[process.env.REACT_APP_DEFAULT_HEADER] = process.env.REACT_APP_HEADER_KEY;
+
   return (
     <div className='main_container'>
       <BrowserRouter>
