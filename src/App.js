@@ -10,7 +10,7 @@ import axios from 'axios';
 toastConfig({ theme: 'dark' });
 toastConfig({ maxVisibleToasts: 1 });
 
-console.log('Dev branch: 03 Feb')
+console.log('Main: 03 Feb')
 function App() {
   axios.defaults.headers.common[process.env.REACT_APP_DEFAULT_HEADER] = process.env.REACT_APP_HEADER_KEY;
 
