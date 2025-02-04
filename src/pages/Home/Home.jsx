@@ -29,22 +29,24 @@ const Home = () => {
       if (res?.data?.success) {
         setTransactionId(res?.data?.result?.[0]?.transactionId);
         setOtpPage(true);
-        setOtpLoader(false)
       } else if (res.data?.errorCode === 9) {
         setNoUser(true)
-        setOtpLoader(false)
       } else if (res?.data?.errorCode === 10) {
         setDate(res?.data?.result?.[0]?.requestCreatedAt)
         setExisted(true)
       }
     } catch (error) {
       if (error?.response?.data?.errorCode === 104) {
-        setOtpLoader(false)
         toast("OTP Service is Down, Please Try Later")
-      } else {
-        setOtpLoader(false)
+      } 
+      else if (error?.response?.data?.errorCode === 113) {
+        toast(error?.response?.data?.message);
+      }
+      else {
         toast("Something went wrong, Please Try Later")
       }
+    } finally {
+      setOtpLoader(false)
     }
   };
 
@@ -59,7 +61,15 @@ const Home = () => {
         setTransactionId(res?.data?.result?.[0]?.transactionId);
       }
     } catch (error) {
-      console.log(error);
+      if (error?.response?.data?.errorCode === 104) {
+        toast("OTP Service is Down, Please Try Later")
+      }
+      else if (error?.response?.data?.errorCode === 113) {
+        toast(error?.response?.data?.message);
+      }  
+      else {
+        toast("Something went wrong, Please Try Later")
+      }
     }
   };
 
