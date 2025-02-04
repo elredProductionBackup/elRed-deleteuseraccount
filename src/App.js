@@ -4,11 +4,10 @@ import Home from './pages/Home/Home';
 import Header from './components/Header/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { toastConfig } from 'react-simple-toasts';
-import 'react-simple-toasts/dist/theme/dark.css'; // choose your theme
+import 'react-simple-toasts/dist/theme/light.css'; // choose your theme
 import 'react-loading-skeleton/dist/skeleton.css'
 import axios from 'axios';
-toastConfig({ theme: 'dark' });
-toastConfig({ maxVisibleToasts: 1 });
+toastConfig({ theme: 'light', maxVisibleToasts: 1 });
 
 console.log('test branch... from tashaf_dev')
 function App() {
