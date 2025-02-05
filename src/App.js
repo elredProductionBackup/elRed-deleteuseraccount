@@ -7,7 +7,7 @@ import { toastConfig } from 'react-simple-toasts';
 import 'react-simple-toasts/dist/theme/light.css'; // choose your theme
 import 'react-loading-skeleton/dist/skeleton.css'
 import axios from 'axios';
-toastConfig({ theme: 'light', maxVisibleToasts: 1 });
+toastConfig({ theme: 'light', maxVisibleToasts: 1, className: "react-simple-toast" });
 
 console.log('test branch...')
 function App() {
