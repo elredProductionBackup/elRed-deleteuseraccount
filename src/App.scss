@@ -58,3 +58,13 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #F7F7F7 inset !important;
 }
+
+.react-simple-toast {
+    width: 80% !important;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: white !important;
+    color: black !important; 
+    font-size: 12px !important;
+    padding: 10px 20px !important;
+}
