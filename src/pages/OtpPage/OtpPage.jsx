@@ -10,6 +10,7 @@ import { useCountdownTimer } from "../../components/Hooks/useCountDownTimer";
 import axios from "axios";
 import { formatPhoneNumber } from "../../functions";
 import SavingChangesOverlay from "../../components/SavingChangesOverlay/SavingChangesOverlay";
+import toast from "react-simple-toasts";
 
 const OtpPage = ({ number, reason, transactionId, resendOtp, setExisted, setDate, countryPrefix }) => {
   const { REACT_APP_API_ENDPOINT } = process.env
@@ -46,7 +47,12 @@ const OtpPage = ({ number, reason, transactionId, resendOtp, setExisted, setDate
         setExisted(true)
       }
     } catch (error) {
-      console.log(error)
+      if(error?.response?.data?.errorCode==115){
+        toast(error?.response?.data?.message)
+      }
+      else{
+        console.log(error)
+      }
     } finally {
       setSubmittingOverlay(false)
     }
