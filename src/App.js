@@ -9,7 +9,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import axios from 'axios';
 toastConfig({ theme: 'light', maxVisibleToasts: 1, className: "react-simple-toast" });
 
-console.log('test branch... from tashaf_dev')
+console.log('test tashaf_dev')
 function App() {
   axios.defaults.headers.common[process.env.REACT_APP_DEFAULT_HEADER] = process.env.REACT_APP_HEADER_KEY;
 
