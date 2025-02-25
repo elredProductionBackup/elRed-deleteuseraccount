@@ -47,11 +47,10 @@ const OtpPage = ({ number, reason, transactionId, resendOtp, setExisted, setDate
         setExisted(true)
       }
     } catch (error) {
-      if(error?.response?.data?.errorCode==115){
+      if (error?.response?.data?.errorCode === 115) {
         toast(error?.response?.data?.message)
-      }
-      else{
-        console.log(error)
+      } else {
+        console.log(error);
       }
     } finally {
       setSubmittingOverlay(false)
