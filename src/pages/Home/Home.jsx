@@ -39,7 +39,7 @@ const Home = () => {
       if (error?.response?.data?.errorCode === 104) {
         toast("OTP Service is Down, Please Try Later")
       } 
-      else if (error?.response?.data?.errorCode === 113) {
+      else if (error?.response?.data?.errorCode === 113 || error?.response?.data?.errorCode === 115) {
         toast(error?.response?.data?.message);
       }
       else {
@@ -64,7 +64,7 @@ const Home = () => {
       if (error?.response?.data?.errorCode === 104) {
         toast("OTP Service is Down, Please Try Later")
       }
-      else if (error?.response?.data?.errorCode === 113) {
+      else if (error?.response?.data?.errorCode === 113 || error?.response?.data?.errorCode === 115) {
         toast(error?.response?.data?.message);
       }  
       else {
