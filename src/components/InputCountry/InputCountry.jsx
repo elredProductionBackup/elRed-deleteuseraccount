@@ -4,7 +4,7 @@ import { countryCodesData } from "../SearchableCountryCodes/countryCodesData";
 import SearchableCountryCodes from "../SearchableCountryCodes/SearchableCountryCodes";
 
 function InputCountry({number, setNumber,phoneError, setPhoneError, countryPrefix, setCountryPrefix}) {
-    const [selectedCountry, setSelectedCountry] = useState(countryCodesData[4]);
+    const [selectedCountry, setSelectedCountry] = useState(countryCodesData[1]);
 
     const handlePhoneNumberChange = (event) => {
         let inputNumber = event.target.value.replace(/\s/g, '');
