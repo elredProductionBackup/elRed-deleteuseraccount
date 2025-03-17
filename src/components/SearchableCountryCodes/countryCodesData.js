@@ -31,7 +31,7 @@ export const countryCodesData =[
     //   countryFlagIcon: bahrain
     // },
     {
-      id: '1',
+      id: '2',
       label: 'Canada',
       countryName: 'Canada',
       maxDigits: 10,
@@ -47,7 +47,7 @@ export const countryCodesData =[
     //   countryFlagIcon: france
     // },
     {
-      id: '2',
+      id: '4',
       label: 'IN',
       countryName: 'India',
       maxDigits: 10,
@@ -111,7 +111,7 @@ export const countryCodesData =[
     //   countryFlagIcon: uk
     // },
     {
-      id: '3',
+      id: '12',
       label: 'United States of America',
       countryName: 'United States of America',
       maxDigits: 10,
